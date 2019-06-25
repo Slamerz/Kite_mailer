@@ -25,7 +25,12 @@
     {
       "name": "Jacob Walker",
       "email": "jacobdawalker@gmail.com"
-    }],
+    },
+    {
+      "name": "Mark Harsley",
+      "email": "mharsley45@gmail.com"
+    }
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
