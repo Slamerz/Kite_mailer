@@ -25,7 +25,12 @@
     {
       "name": "Jacob Walker",
       "email": "jacobdawalker@gmail.com"
-    }],
+    },
+    {
+      "name": "Marsha Williamson",
+      "email": "tramar92@hotmail.com"
+    }
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
