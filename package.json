@@ -21,11 +21,15 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "contributors": [
-    {
+  "contributors": [{
       "name": "Jacob Walker",
       "email": "jacobdawalker@gmail.com"
-    }],
+    },
+    {
+      "name": "Dennis Christenson",
+      "email": "denchris32@gmail.com"
+    }
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
