@@ -1,56 +1,67 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
 
+function NavBarComp(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
 
-class NavBarComp extends Component {
-  constructor(props) {
-    super(props);
-    this.toggle = this.toggle.bind(this);
-    this.state = { open: false };
+NavBarComp.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+function LinkTab(props) {
+  return (
+    <Tab
+      component="a"
+      onClick={event => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+export default function NavTabs() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  function handleChange(event, newValue) {
+    setValue(newValue);
   }
 
-  toggle() {
-    this.setState(prevState => {
-      return { open: !prevState.open };
-    });
-  }
-
-  render() {
-    console.log(this.props.dispatch);
-    return (
-      <Navbar className="navbar" theme="primary">
-        <Button tag={Link} to="/homepage">
-          {" "}
-          Home{" "}
-        </Button>
-        <SearchBar />
-        <NavBarBut>Go!</NavBarBut>
-        <Dropdown
-          open={this.state.open}
-          toggle={this.toggle}
-          className="d-table"
-        >
-          <DropdownToggle> Settings </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem onClick={() => this.props.logout()}>
-              {" "}
-              Logout{" "}
-            </DropdownItem>
-            <DropdownItem tag={Link} to="/edit-profile">
-              {" "}
-              Edit Profile{" "}
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </Navbar>
-    );
-  }
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Tabs variant="fullWidth" value={value} onChange={handleChange}>
+          <LinkTab label="Messages" href="/drafr" />
+          <LinkTab label="Orders" href="/compose" />
+          <LinkTab label="Contacts" href="/add" />
+          <LinkTab label="Logout" href="/backtologin" />
+        </Tabs>
+      </AppBar>
+      {value === 0 && <TabContainer></TabContainer>}
+      {value === 1 && <TabContainer></TabContainer>}
+      {value === 2 && <TabContainer></TabContainer>}
+      {value === 3 && <TabContainer></TabContainer>}
+    </div>
+  );
 }
 
 
 
-// export default NavBarComp;
-export default connect(
-  null,
-)(NavBarComp);
