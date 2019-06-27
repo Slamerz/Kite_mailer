@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 
-function NavBarComp(props) {
+function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
       {props.children}
@@ -14,7 +14,7 @@ function NavBarComp(props) {
   );
 }
 
-NavBarComp.propTypes = {
+TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
@@ -58,7 +58,7 @@ export default function NavTabs() {
       {value === 0 && <TabContainer></TabContainer>}
       {value === 1 && <TabContainer></TabContainer>}
       {value === 2 && <TabContainer></TabContainer>}
-      {value === 3 && <TabContainer></TabContainer>}
+      {value === 3 && <TabContainer>hi</TabContainer>}
     </div>
   );
 }
