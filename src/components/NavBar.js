@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function NavTabs() {
+export default function NavBar() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -49,16 +49,12 @@ export default function NavTabs() {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-          <LinkTab label="Messages" href="/drafr" />
-          <LinkTab label="Orders" href="/compose" />
-          <LinkTab label="Contacts" href="/add" />
-          <LinkTab label="Logout" href="/backtologin" />
+          <LinkTab label="Messages" href="/messages" />
+          <LinkTab label="Orders" href="/orders" />
+          <LinkTab label="Contacts" href="/contacts" />
+          <LinkTab label="Logout" href="/logout" />
         </Tabs>
       </AppBar>
-      {value === 0 && <TabContainer></TabContainer>}
-      {value === 1 && <TabContainer></TabContainer>}
-      {value === 2 && <TabContainer></TabContainer>}
-      {value === 3 && <TabContainer>hi</TabContainer>}
     </div>
   );
 }
