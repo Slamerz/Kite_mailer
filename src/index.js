@@ -4,14 +4,17 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import history from "./reducers";
 
-export const store = createStore(history);
+import configureStore, { history } from "./configureStore";
+import { ConnectedRouter } from "connected-react-router";
+
+export const store = configureStore({});
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById("root")
 );

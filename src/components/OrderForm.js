@@ -1,11 +1,13 @@
+import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import { formDataChange } from "../actions/formDataChange";
 
-const useStyles = makeStyles(theme => ({
+const styles = {
   textField: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
+    // marginLeft: theme.spacing(2),
+    // marginRight: theme.spacing(2),
     width: 200
   },
   dense: {
@@ -14,48 +16,80 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200
   }
-}));
+};
 
-export default function OrderForm() {
-  const classes = useStyles();
-  return (
-    <React.Fragment>
-      <TextField
-        label="Addressee ID #"
-        margin="normal"
-        className={classes.textField}
-        name="addresseeID"
-      />
-      <TextField
-        label="Facility Name"
-        margin="normal"
-        className={classes.textField}
-        name="facilityName"
-      />
-      <TextField
-        label="Addressee First Name"
-        margin="normal"
-        className={classes.textField}
-        name="addresseeFirst"
-      />
-      <TextField
-        label="Addressee Last Name"
-        margin="normal"
-        className={classes.textField}
-        name="addresseeLast"
-      />
-      <TextField
-        label="Addressee Address"
-        margin="normal"
-        className={classes.textField}
-        name="addresseeAddress"
-      />
-      <TextField
-        label="Unit ID"
-        margin="normal"
-        className={classes.textField}
-        name="unitID"
-      />
-    </React.Fragment>
-  );
+class OrderForm extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <TextField
+          label="Addressee ID #"
+          margin="normal"
+          // className={classes.textField}
+          style={{ width: 200 }}
+          name="addresseeID"
+          onChange={e =>
+            this.props.formDataChange([e.target.name, e.target.value])
+          }
+        />
+        <TextField
+          label="Facility Name"
+          margin="normal"
+          // className={classes.textField}
+          style={{ width: 200 }}
+          name="facilityName"
+          onChange={e =>
+            this.props.formDataChange([e.target.name, e.target.value])
+          }
+        />
+        <TextField
+          label="Addressee First Name"
+          margin="normal"
+          // className={classes.textField}
+          style={{ width: 200 }}
+          name="firstName"
+          onChange={e =>
+            this.props.formDataChange([e.target.name, e.target.value])
+          }
+        />
+        <TextField
+          label="Addressee Last Name"
+          margin="normal"
+          // className={classes.textField}
+          style={{ width: 200 }}
+          name="lastName"
+          onChange={e =>
+            this.props.formDataChange([e.target.name, e.target.value])
+          }
+        />
+        <TextField
+          label="Addressee Address"
+          margin="normal"
+          // className={classes.textField}
+          style={{ width: 200 }}
+          name="addresseeAddress"
+          onChange={e =>
+            this.props.formDataChange([e.target.name, e.target.value])
+          }
+        />
+        <TextField
+          label="Unit ID"
+          margin="normal"
+          // className={classes.textField}
+          style={{ width: 200 }}
+          name="unitID"
+          onChange={e =>
+            this.props.formDataChange([e.target.name, e.target.value])
+          }
+        />
+      </React.Fragment>
+    );
+  }
 }
+
+const mapDispatchToProps = { formDataChange };
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(OrderForm);
