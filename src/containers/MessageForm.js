@@ -12,6 +12,12 @@ class MessageForm extends Component {
   handleInit() {
     console.log("FilePond instance has initialised", this.pond);
   }
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  handleSubmit = e => {
+    e.preventDefault();
+  };
   render() {
     return (
       <React.Fragment>
@@ -31,7 +37,7 @@ class MessageForm extends Component {
               });
             }}
           />
-          <Button type="Submit">Submit</Button>
+          <Button type="submit">Submit</Button>
         </form>
       </React.Fragment>
     );

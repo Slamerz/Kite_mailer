@@ -24,31 +24,37 @@ export default function OrderForm() {
         label="Addressee ID #"
         margin="normal"
         className={classes.textField}
+        name="addresseeID"
       />
       <TextField
         label="Facility Name"
         margin="normal"
         className={classes.textField}
+        name="facilityName"
       />
       <TextField
         label="Addressee First Name"
         margin="normal"
         className={classes.textField}
+        name="addresseeFirst"
       />
       <TextField
         label="Addressee Last Name"
         margin="normal"
         className={classes.textField}
+        name="addresseeLast"
       />
       <TextField
         label="Addressee Address"
         margin="normal"
         className={classes.textField}
+        name="addresseeAddress"
       />
       <TextField
         label="Unit ID"
         margin="normal"
         className={classes.textField}
+        name="unitID"
       />
     </React.Fragment>
   );

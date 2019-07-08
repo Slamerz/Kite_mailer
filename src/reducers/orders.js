@@ -1,4 +1,4 @@
-import { ORDER_SUCCESS, ORDER_FAIL } from "../actions/orders";
+import { ORDER_SUCCESS, ORDER_FAIL } from "../actions/placeOrder.js";
 
 const initialState = {
   orders: [],
