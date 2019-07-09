@@ -7,10 +7,11 @@ const url = domain + "/api/orders";
 
 export const placeOrder = data => dispatch => {
   console.log(JSON.stringify(data));
+  //TODO Remove hard coded senderId
   return fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    body: JSON.stringify({...data, senderId: "5d1a29379765acd7a5fa8dbf"})
   })
     .then(handleJsonResponse)
     .then(result => {
