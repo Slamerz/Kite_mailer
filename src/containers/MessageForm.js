@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { FilePond } from "react-filepond";
-import "filepond/dist/filepond.min.css";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import OrderForm from "../components/OrderForm";
 import { connect } from "react-redux";
 import { Button } from "@material-ui/core";
@@ -26,22 +23,16 @@ class MessageForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form noValidate autoComplete="off">
+        <form
+          noValidate
+          autoComplete="off"
+          action="/api/pictures"
+          encType="multipart/formdata"
+        >
           <OrderForm />
-          <FilePond
-            ref={ref => (this.pond = ref)}
-            // files={this.state.photos}
-            allowMultiple={true}
-            maxFiles={10}
-            server="/api/pictures"
-            oninit={() => this.handleInit()}
-            onupdatefiles={fileItems => {
-              // Set current file objects to this.state
-              this.setState({
-                photos: fileItems.map(fileItem => fileItem.file)
-              });
-            }}
-          />
+          <br />
+          <input type="file" name="photos" multiple />
+          <br />
           <Button type="submit" onClick={this.handleSubmit}>
             Submit
           </Button>
