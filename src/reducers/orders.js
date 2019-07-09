@@ -1,9 +1,9 @@
+import { ORDER_SUCCESS, ORDER_FAIL } from "../actions/placeOrder.js";
 import {
   FETCH_ORDERS_BEGIN,
   FETCH_ORDERS_SUCCESS,
   FETCH_ORDERS_FAILURE
 } from "../actions/constants";
-
 const initialState = {
   orders: [{
     id: "uio2u4oi2u4o",
@@ -42,9 +42,20 @@ const initialState = {
   loading: false,
   error: null
 };
-
 export default (state = initialState, action) => {
   switch (action.type) {
+    case ORDER_SUCCESS:
+      return {
+        orders: [...action.payload],
+        order_fail: false,
+        order_success: true
+      };
+    case ORDER_FAIL:
+      return {
+        orders: [state],
+        order_fail: true,
+        order_success: false
+      };
     case FETCH_ORDERS_BEGIN:
       return { ...state, loading: true, error: null };
     case FETCH_ORDERS_SUCCESS:
