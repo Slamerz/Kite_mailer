@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavBar() {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
     setValue(newValue);
