@@ -1,10 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import { Link } from "react-router-dom";
 
 function TabContainer(props) {
   return (
@@ -15,26 +16,18 @@ function TabContainer(props) {
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={event => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
+  return <Tab component={Link} {...props} />;
 }
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
+    backgroundColor: theme.palette.background.paper
+  }
 }));
 
 export default function NavBar() {
@@ -46,18 +39,17 @@ export default function NavBar() {
   }
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs variant="fullWidth" value={value} onChange={handleChange}>
-          <LinkTab label="Messages" href="/messages" />
-          <LinkTab label="Orders" href="/orders" />
-          <LinkTab label="Contacts" href="/contacts" />
-          <LinkTab label="Logout" href="/logout" />
-        </Tabs>
-      </AppBar>
-    </div>
+    <React.Fragment>
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Tabs variant="fullWidth" onChange={handleChange}>
+            <LinkTab label="Messages" to="/messages" />
+            <LinkTab label="Orders" to="/orders" />
+            {/* <LinkTab label="Contacts" to="/contacts" /> */}
+            <LinkTab label="Logout" to="/logout" />
+          </Tabs>
+        </AppBar>
+      </div>
+    </React.Fragment>
   );
 }
-
-
-
