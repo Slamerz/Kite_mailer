@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavBar() {
   const classes = useStyles();
-  const [setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
     setValue(newValue);
@@ -42,10 +42,9 @@ export default function NavBar() {
     <React.Fragment>
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs variant="fullWidth" onChange={handleChange}>
-            <LinkTab label="Messages" to="/messages" />
+          <Tabs variant="fullWidth" value={value} onChange={handleChange}>
+            <LinkTab label="Send Message" to="/send" />
             <LinkTab label="Orders" to="/orders" />
-            {/* <LinkTab label="Contacts" to="/contacts" /> */}
             <LinkTab label="Logout" to="/logout" />
           </Tabs>
         </AppBar>
