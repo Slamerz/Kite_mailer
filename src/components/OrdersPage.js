@@ -7,7 +7,6 @@ import {
   AppBar,
   Toolbar,
   List,
-  Typography,
   Divider,
   IconButton
 } from "@material-ui/core";
@@ -132,7 +131,7 @@ export default function OrdersPage(props) {
         <Divider />
         <List>
           {orders.map((order, index) => (
-            <OrderListItem order={order} />
+            <OrderListItem order={order} key={index}/>
           ))}
         </List>
       </Drawer>
