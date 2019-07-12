@@ -35,8 +35,12 @@ function ItemStatusIcon(props) {
     case "rejected": {
       return <ReportIcon />;
     }
+    default: {
+      return <MailIcon />;
+    }
   }
 }
+
 export default function OrderListItem(props) {
   const classes = useStyles();
   const { status, facilityName, addressee, id } = props.order;
