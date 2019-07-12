@@ -1,11 +1,11 @@
 import {
-    FETCH_USERS_BEGIN,
-    FETCH_USERS_SUCCESS,
-    FETCH_USERS_FAILURE
-  } from "../actions/constants";
-  
-  const initialState = {
-    users: [{
+  POST_USER_BEGIN,
+  POST_USER_SUCCESS,
+  POST_USER_FAILURE
+} from "../actions/constants";
+
+const initialState = {
+  users: [],
         [{
             "id": "string",
             "username": "string",
@@ -21,24 +21,24 @@ import {
         ]
       }],
       
-    loading: false,
-    error: null
-  };
-  
-  export default (state = initialState, action) => {
-    switch (action.type) {
-      case FETCH_USERS_BEGIN:
-        return { ...state, loading: true, error: null };
-      case FETCH_USERS_SUCCESS:
-        return { ...state, loading: false, users: [...state.users, ...action.payload.orders] };
-      case FETCH_USERS_FAILURE:
-        return {
+  loading: false,
+  error: null
+};
+
+export default (state = initialState, action) => {
+  switch (action.type) {
+    case POST_USER_BEGIN:
+      return { ...state, loading: true, error: null };
+    case POST_USER_SUCCESS:
+      return { ...state, loading: false };
+    case POST_USER_FAILURE:
+      return { ...state, loading: false, error: action.payload.error };
           ...state,
           loading: false,
           error: action.payload.error,
           users: []
         };
-      default:
-        return state;
-    }
-  };
+    default:
+      return state;
+  }
+};
