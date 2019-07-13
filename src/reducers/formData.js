@@ -1,4 +1,4 @@
-import { UPDATE_FORM, UPDATE_ADDRESSEE } from "../actions/formDataChange";
+import { UPDATE_FORM, UPDATE_ADDRESSEE } from "../actions/message";
 
 const initialState = {
   id: "",
