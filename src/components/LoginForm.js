@@ -10,16 +10,8 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import MadeWithLove from "./MadeWithLoveStatement";
 
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      
-      {' Kite team.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Login() {
+export default function LoginForm() {
   const classes = useStyles();
 
   return (
@@ -105,7 +97,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
