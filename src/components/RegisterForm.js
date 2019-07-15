@@ -14,7 +14,7 @@ import MadeWithLove from "./MadeWithLoveStatement";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "100vh",
+    height: "100vh"
   },
   image: {
     backgroundImage: "john-t-OedmBcmHS9Q-unsplash.jpg",

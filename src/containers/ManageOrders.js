@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { fetchOrders } from "../actions";
 import OrdersPage from "../components/OrdersPage";
 
-
 class ManageOrders extends Component {
   componentDidMount() {
     this.props.dispatch(fetchOrders());
@@ -17,9 +16,8 @@ class ManageOrders extends Component {
     if (ordersLoading) {
       return <div> Loading...</div>;
     }
-    if(orders)
-      return <OrdersPage orders={orders} match={match}/>;
-    else return <div/>
+    if (orders) return <OrdersPage orders={orders} match={match} />;
+    else return <div />;
   }
 }
 

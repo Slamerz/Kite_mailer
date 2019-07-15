@@ -3,14 +3,14 @@ import React from "react";
 import LoginForm from "../components/LoginForm";
 
 import { postAuth } from "../actions/auth";
-import {Redirect} from "react-router";
+import { Redirect } from "react-router";
 
 function LoginPage(props) {
-    const {onSubmit, user} = props;
+  const { onSubmit, user } = props;
 
-    if(user.token){
-        return (<Redirect to="/send"/>)
-    }
+  if (user.token) {
+    return <Redirect to="/send" />;
+  }
   return (
     <React.Fragment>
       <LoginForm onSubmit={onSubmit} />
@@ -19,8 +19,9 @@ function LoginPage(props) {
 }
 
 const mapStateToProps = state => ({
-    user: state.auth.user
+  user: state.auth.user
 });
+
 const mapDispatchToProps = {
   onSubmit: postAuth
 };

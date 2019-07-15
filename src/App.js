@@ -10,12 +10,13 @@ import LoginPage from "./containers/LoginPage";
 function App() {
   return (
     <Switch>
-        <Route path="/" exact component={LoginPage}/>
+      <Route path="/" exact component={LoginPage} />
+      <Route path="/register" exact component={RegisterPage} />
+
       <Route path="/send" exact component={MessageForm} />
       <Route path="/orders" exact component={ManageOrders} />
       <Route path="/orders/:id" component={ManageOrders} />
-        <Route path="/nav" component={NavBar} />
-        <Route path="/register" exact component={RegisterPage}/>
+      <Route path="/nav" component={NavBar} />
     </Switch>
   );
 }

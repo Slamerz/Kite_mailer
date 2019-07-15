@@ -40,7 +40,9 @@ export function postUser(user) {
         dispatch(postUserSuccess(json));
       })
       .then(user => {
-        postAuth({ email: newUser.email, password: newUser.password });
+        dispatch(
+          postAuth({ email: newUser.email, password: newUser.password })
+        );
       })
       .catch(error => {
         console.log(error);

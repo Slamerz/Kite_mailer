@@ -11,7 +11,7 @@ export const placeOrder = data => dispatch => {
   return fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({...data, senderId: "5d1a29379765acd7a5fa8dbf"})
+    body: JSON.stringify({ ...data, senderId: "5d1a29379765acd7a5fa8dbf" })
   })
     .then(handleJsonResponse)
     .then(result => {
