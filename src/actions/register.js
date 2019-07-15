@@ -6,6 +6,8 @@ import {
   jsonHeaders
 } from "./constants";
 
+import { postAuth } from "./auth";
+
 export const postUserBegin = () => ({
   type: POST_USER_BEGIN
 });
@@ -25,7 +27,6 @@ export function postUser(user) {
     email: user.email,
     password: user.password
   };
-  console.log("Running Post User");
   return dispatch => {
     dispatch(postUserBegin());
     return fetch(`${domain}/api/users`, {
@@ -37,7 +38,9 @@ export function postUser(user) {
       .then(res => res.json())
       .then(json => {
         dispatch(postUserSuccess(json));
-        return json;
+      })
+      .then(user => {
+        postAuth({ email: newUser.email, password: newUser.password });
       })
       .catch(error => {
         console.log(error);

@@ -1,27 +1,30 @@
 import { connect } from "react-redux";
-import React, { Component } from "react";
+import React from "react";
 import RegisterForm from "../components/RegisterForm";
-import NavBar from "../components/NavBar";
-import {postUser} from "../actions";
 
+import { postUser } from "../actions";
+import {Redirect} from "react-router";
 
-
-class RegisterPage extends Component {
-  componentDidMount() {}
-
-  render() {
-    return (
-      <React.Fragment>
-        <NavBar />
-        <RegisterForm onSub={this.props.onSub} />
-      </React.Fragment>
-    );
-  }
+function RegisterPage(props) {
+    const {onSubmit, user} = props;
+    if(user.token){
+        return (<Redirect to="/send"/>)
+    }
+  return (
+    <React.Fragment>
+      <RegisterForm onSubmbit={onSubmit} />
+    </React.Fragment>
+  );
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    user: state.auth.user
+});
 const mapDispatchToProps = {
-  onSub: postUser
+  onSubmit: postUser
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterPage);
