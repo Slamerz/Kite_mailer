@@ -2,19 +2,6 @@ import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import { formDataChange } from "../actions/formDataChange";
-// const styles = {
-//   textField: {
-//     // marginLeft: theme.spacing(2),
-//     // marginRight: theme.spacing(2),
-//     width: 200
-//   },
-//   dense: {
-//     marginTop: 19
-//   },
-//   menu: {
-//     width: 200
-//   }
-// };
 
 class OrderForm extends Component {
   render() {
@@ -90,6 +77,8 @@ class OrderForm extends Component {
             this.props.formDataChange([e.target.name, e.target.value])
           }
         />
+        <br />
+        <br />
       </React.Fragment>
     );
   }

@@ -1,4 +1,8 @@
-import { UPDATE_FORM, UPDATE_ADDRESSEE } from "../actions/formDataChange";
+import {
+  UPDATE_FORM,
+  UPDATE_ADDRESSEE,
+  UPDATE_PHOTOS
+} from "../actions/formDataChange";
 
 const initialState = {
   id: "",
@@ -21,6 +25,10 @@ export default (state = initialState, action) => {
       let stateCopy = { ...state };
       stateCopy.addressee[action.payload[0]] = action.payload[1];
       return stateCopy;
+    case UPDATE_PHOTOS:
+      let copyState = { ...state };
+      copyState.photos[action.payload[0]] = action.payload[1];
+      return copyState;
     default:
       return state;
   }
