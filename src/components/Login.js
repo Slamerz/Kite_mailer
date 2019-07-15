@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import "./bkg.jpg";
 
 function MadeWithLove() {
   return (
@@ -48,12 +49,19 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  backgroundTemplate: {
+    backgroundImage: "bkg.jpg",
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }
 }));
 
 export default function Login() {
   const classes = useStyles();
 
   return (
+    
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -115,6 +123,8 @@ export default function Login() {
             </Box>
           </form>
         </div>
+
+        <div classname={classes.backgroundTemplate}></div>
       </Grid>
     </Grid>
   );
