@@ -1,18 +1,19 @@
 import { connect } from "react-redux";
 import React from "react";
-import RegisterForm from "../components/RegisterForm";
+import LoginForm from "../components/LoginForm";
 
-import { postUser } from "../actions";
+import { postAuth } from "../actions/auth";
 import {Redirect} from "react-router";
 
-function RegisterPage(props) {
+function LoginPage(props) {
     const {onSubmit, user} = props;
+
     if(user.token){
         return (<Redirect to="/send"/>)
     }
   return (
     <React.Fragment>
-      <RegisterForm onSubmbit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} />
     </React.Fragment>
   );
 }
@@ -21,10 +22,10 @@ const mapStateToProps = state => ({
     user: state.auth.user
 });
 const mapDispatchToProps = {
-  onSubmit: postUser
+  onSubmit: postAuth
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegisterPage);
+)(LoginPage);
