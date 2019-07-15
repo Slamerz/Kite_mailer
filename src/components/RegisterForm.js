@@ -14,8 +14,7 @@ import MadeWithLove from "./MadeWithLoveStatement";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "100vh",
-    margin: theme.spacing(1)
+    height: "100vh"
   },
   image: {
     backgroundImage: "john-t-OedmBcmHS9Q-unsplash.jpg",
@@ -48,7 +47,7 @@ export default function RegisterForm(props) {
   const handleChange = e => {
     state[e.target.name] = e.target.value;
   };
-  const onSub = props.onSub;
+  const onSubmit = props.onSubmit;
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -56,14 +55,14 @@ export default function RegisterForm(props) {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
-            Sign in
+            Register
           </Typography>
           <form
             className={classes.form}
             noValidate
             onSubmit={e => {
               e.preventDefault();
-              return onSub(state);
+              return onSubmit(state);
             }}
           >
             <Grid container spacing={2}>

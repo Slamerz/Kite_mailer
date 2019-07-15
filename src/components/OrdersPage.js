@@ -131,7 +131,7 @@ export default function OrdersPage(props) {
         <Divider />
         <List>
           {orders.map((order, index) => (
-            <OrderListItem order={order} key={index}/>
+            <OrderListItem order={order} key={index} />
           ))}
         </List>
       </Drawer>
@@ -141,9 +141,10 @@ export default function OrdersPage(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        <DisplayOrder order={orders.find(item=> item.id === match.params.id)}/>
+        <DisplayOrder
+          order={orders.find(item => item.id === match.params.id)}
+        />
       </main>
     </div>
   );
 }
-

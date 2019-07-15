@@ -20,11 +20,11 @@ export const fetchOrdersFailure = error => ({
 export function fetchOrders() {
   return dispatch => {
     dispatch(fetchOrdersBegin());
-    return fetch(`${domain}/api/orders/`)
+    //TODO change to `orders` instead of `orders/` when backend is changed
+    return fetch(`${domain}/api/orders`)
       .then(handleErrors)
       .then(res => res.json())
       .then(json => {
-        console.log(json);
         dispatch(fetchOrdersSuccess(json));
         return json;
       })

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
-import { formDataChange } from "../actions/formDataChange";
+import { message } from "../actions/message";
 // const styles = {
 //   textField: {
 //     // marginLeft: theme.spacing(2),
@@ -95,7 +95,7 @@ class OrderForm extends Component {
   }
 }
 
-const mapDispatchToProps = { formDataChange };
+const mapDispatchToProps = { formDataChange: message };
 
 export default connect(
   null,
