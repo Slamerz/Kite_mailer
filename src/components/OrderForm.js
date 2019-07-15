@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
 import { formDataChange } from "../actions/formDataChange";
@@ -67,11 +68,12 @@ class OrderForm extends Component {
             this.props.formDataChange([e.target.name, e.target.value])
           }
         />
+        <br />
         <TextField
           label="Include a Message"
           margin="normal"
           // className={classes.textField}
-          style={{ width: 200, marginLeft: 2, marginRight: 2 }}
+          style={{ width: "100vw", marginLeft: 2, marginRight: 2 }}
           name="message"
           onChange={e =>
             this.props.formDataChange([e.target.name, e.target.value])

@@ -1,15 +1,17 @@
-import React, { Component } from "react";
-import OrderForm from "../components/OrderForm";
-import { connect } from "react-redux";
-import { Button } from "@material-ui/core";
-import { placeOrder } from "../actions/placeOrder";
-import { FilePond, registerPlugin } from "react-filepond";
 import "filepond/dist/filepond.min.css";
-import { domain } from "../actions/constants";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
+import { FilePond, registerPlugin } from "react-filepond";
+import React, { Component } from "react";
+
+import { Button } from "@material-ui/core";
+import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
-import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
-import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
+import OrderForm from "../components/OrderForm";
+import { connect } from "react-redux";
+import { domain } from "../actions/constants";
+import { placeOrder } from "../actions/placeOrder";
 
 registerPlugin(
   FilePondPluginImageExifOrientation,
