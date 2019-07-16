@@ -11,13 +11,18 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import MadeWithLove from "./MadeWithLoveStatement";
+// import Logo from "./LogoTemplate";
+// import backgroundImage from "../images/bkg.jpg"
+
+// import "../public/images/bkg.jpg";
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100vh"
   },
   image: {
-    backgroundImage: "john-t-OedmBcmHS9Q-unsplash.jpg",
+    // backgroundImage: "../images/bkg.jpg",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center"
@@ -39,21 +44,14 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2)
   },
+
   backgroundTemplate: {
-    backgroundImage: "./images/bkg.jpg",
+    backgroundImage: "url(../images/LOGIN_SPLASH_BLUE.png)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    margin: theme.spacing(1),
-    width: "800px", 
-
-
-    // height: "100%",
-
-  },
+  
+},
 }));
 
 export default function LoginForm(props) {
@@ -67,9 +65,11 @@ export default function LoginForm(props) {
   const onSubmit = props.onSubmit;
 
   return (
+    <div >
     <Grid container component="main" className={classes.root}>
+
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid item xs={false} sm={4} md={7} className={classes.backgroundTemplate}></Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
@@ -138,31 +138,9 @@ export default function LoginForm(props) {
           </form>
         </div>
       </Grid>
-
-      <div >
-        <Paper className={classes.backgroundTemplate}>
-          {/* logo goes here */}
-          {<br></br>}
-        <Typography variant="h1" component="h1" >
-        KITe
-        
-        </Typography>
-        <Typography>
-          ______________________________________________
-        </Typography>
-        {<br></br>}
-        <Typography component="p"  >
-        Connecting People in Remote Places With The People That Matter 
-        </Typography>
-        <Typography component="p"  >
-        & Memories That Will Never Be Forgotten
-        </Typography>
-        {<br></br>}
-      </Paper>
-
-        </div>
-
+      {/* <div><Logo></Logo></div> */}
     </Grid>
+    </div>
   );
 }
 
