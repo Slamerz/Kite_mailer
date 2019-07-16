@@ -1,28 +1,3 @@
-<<<<<<< HEAD:src/components/Login.js
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import "./bkg.jpg";
-
-function MadeWithLove() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Built with love by the '}
-      
-      {' Kite team.'}
-    </Typography>
-  );
-}
-=======
 import React from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -36,7 +11,6 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import MadeWithLove from "./MadeWithLoveStatement";
->>>>>>> f5ee55983fe125939ff184e0980068e053c512b7:src/components/LoginForm.js
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,18 +37,23 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1)
   },
   submit: {
-<<<<<<< HEAD:src/components/Login.js
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 2)
   },
   backgroundTemplate: {
-    backgroundImage: "bkg.jpg",
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-=======
-    margin: theme.spacing(3, 0, 2)
->>>>>>> f5ee55983fe125939ff184e0980068e053c512b7:src/components/LoginForm.js
-  }
+    backgroundImage: "./images/bkg.jpg",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    margin: theme.spacing(1),
+    width: "800px", 
+
+
+    // height: "100%",
+
+  },
 }));
 
 export default function LoginForm(props) {
@@ -88,7 +67,6 @@ export default function LoginForm(props) {
   const onSubmit = props.onSubmit;
 
   return (
-    
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -159,9 +137,33 @@ export default function LoginForm(props) {
             </Box>
           </form>
         </div>
-
-        <div classname={classes.backgroundTemplate}></div>
       </Grid>
+
+      <div >
+        <Paper className={classes.backgroundTemplate}>
+          {/* logo goes here */}
+          {<br></br>}
+        <Typography variant="h1" component="h1" >
+        KITe
+        
+        </Typography>
+        <Typography>
+          ______________________________________________
+        </Typography>
+        {<br></br>}
+        <Typography component="p"  >
+        Connecting People in Remote Places With The People That Matter 
+        </Typography>
+        <Typography component="p"  >
+        & Memories That Will Never Be Forgotten
+        </Typography>
+        {<br></br>}
+      </Paper>
+
+        </div>
+
     </Grid>
   );
 }
+
+
