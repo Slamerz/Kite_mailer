@@ -13,6 +13,8 @@ import { connect } from "react-redux";
 import { domain } from "../actions/constants";
 import { placeOrder } from "../actions/placeOrder";
 
+//allows file pond to display previews, and validates image file types
+
 registerPlugin(
   FilePondPluginImageExifOrientation,
   FilePondPluginImagePreview,
@@ -30,6 +32,8 @@ class MessageForm extends Component {
     e.preventDefault();
     this.props.placeOrder(this.props.formData);
   };
+
+  //shows file pond instance is running
 
   handleInit() {
     console.log("FilePond instance has initialised", this.pond);
