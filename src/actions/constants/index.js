@@ -9,6 +9,12 @@ export const POST_ORDER_FAIL = "POST_ORDER_FAIL";
 export const UPDATE_FORM = "UPDATE_FORM";
 export const UPDATE_ADDRESSEE = "UPDATE_ADDRESSEE";
 export const UPDATE_PHOTOS = "UPDATE_PHOTOS";
+export const POST_USER_BEGIN = "POST_USER_BEGIN";
+export const POST_USER_SUCCESS = "POST_USER_SUCCESS";
+export const POST_USER_FAILURE = "POST_USER_FAILURE";
+export const POST_AUTH_BEGIN = "POST_AUTH_BEGIN";
+export const POST_AUTH_SUCCESS = "POST_AUTH_SUCCESS";
+export const POST_AUTH_FAILURE = "POST_AUTH_FAILURE";
 export const jsonHeaders = {
   "Content-Type": "application/json",
   Accept: "application/json"

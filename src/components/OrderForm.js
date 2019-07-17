@@ -89,7 +89,7 @@ class OrderForm extends Component {
   }
 }
 
-const mapDispatchToProps = { formDataChange: message };
+const mapDispatchToProps = { formDataChange };
 
 export default connect(
   null,
