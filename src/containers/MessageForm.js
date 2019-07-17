@@ -8,26 +8,25 @@ import { Button } from "@material-ui/core";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation";
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
+import FilePondPluginFileEncode from "filepond-plugin-file-encode";
 import OrderForm from "../components/OrderForm";
 import { connect } from "react-redux";
 import { domain } from "../actions/constants";
 import { placeOrder } from "../actions/placeOrder";
+import { formDataChange } from "../actions/formDataChange";
 
 //allows file pond to display previews, and validates image file types
 
 registerPlugin(
   FilePondPluginImageExifOrientation,
   FilePondPluginImagePreview,
-  FilePondPluginFileValidateType
+  FilePondPluginFileValidateType,
+  FilePondPluginFileEncode
 );
 
 const url = domain + "/api/pictures";
 
 class MessageForm extends Component {
-  componentDidMount() {
-    placeOrder();
-  }
-
   handleSubmit = e => {
     e.preventDefault();
     this.props.placeOrder(this.props.formData);
@@ -40,6 +39,7 @@ class MessageForm extends Component {
   }
 
   render() {
+    const { formDataChange } = this.props;
     return (
       <React.Fragment>
         <form
@@ -49,20 +49,21 @@ class MessageForm extends Component {
           action="/api/orders"
           encType="multipart/formdata"
         >
-          <OrderForm />
+          <OrderForm formDataChange={formDataChange} />
           <FilePond
             allowFileTypeValidation={true}
             acceptedFileTypes={["image/*"]}
+            allowFileEncode
             ref={ref => (this.pond = ref)}
             files={this.props.photos}
             allowMultiple={true}
             maxFiles={10}
             server={url}
             oninit={() => this.handleInit()}
-            onupdatefiles={file => {
-              this.setState({
-                photos: file.map(fileItem => fileItem.file)
-              });
+            onprocessfile={(error, files) => {
+              const f = files.serverId;
+              console.log(error, f);
+              formDataChange(["photos", f]);
             }}
           />
           <Button type="submit" onClick={this.handleSubmit}>
@@ -79,7 +80,8 @@ const mapStatetoProps = state => {
 };
 
 const mapDispatchtoProps = {
-  placeOrder
+  placeOrder,
+  formDataChange
 };
 
 export default connect(

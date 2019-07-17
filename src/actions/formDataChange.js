@@ -1,19 +1,30 @@
-export const UPDATE_FORM = "UPDATE_FORM";
-export const UPDATE_ADDRESSEE = "UPDATE_ADDRESSEE";
-export const UPDATE_PHOTOS = "UPDATE_PHOTOS";
+import { UPDATE_ADDRESSEE, UPDATE_FORM, UPDATE_PHOTOS } from "./constants";
 
-export const formDataChange = data => dispatch => {
-  if (data[0] === "firstName" || data[0] === "lastName") {
-    return dispatch({
-      type: UPDATE_ADDRESSEE,
-      payload: data
-    });
-  } else if (data[0] === "photos") {
-    return dispatch({
-      type: UPDATE_PHOTOS,
-      payload: data
-    });
-  } else {
-    return dispatch({ type: UPDATE_FORM, payload: data });
-  }
-};
+export const updateForm = data => ({
+  type: UPDATE_FORM,
+  payload: { data }
+});
+
+export const updateAddressee = data => ({
+  type: UPDATE_ADDRESSEE,
+  payload: { data }
+});
+
+export const updatePhotos = data => ({
+  type: UPDATE_PHOTOS,
+  payload: { data }
+});
+export function formDataChange(data) {
+  return dispatch => {
+    switch (data[0]) {
+      case "firstName" || "lastName":
+        return dispatch(updateAddressee(data));
+
+      case "photos":
+        return dispatch(updatePhotos(data));
+
+      default:
+        return dispatch(updateForm(data));
+    }
+  };
+}
