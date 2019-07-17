@@ -1,8 +1,10 @@
-import { ORDER_SUCCESS, ORDER_FAIL } from "../actions/placeOrder.js";
 import {
   FETCH_ORDERS_BEGIN,
   FETCH_ORDERS_SUCCESS,
-  FETCH_ORDERS_FAILURE
+  FETCH_ORDERS_FAILURE,
+  POST_ORDER_BEGIN,
+  POST_ORDER_SUCCESS,
+  POST_ORDER_FAIL
 } from "../actions/constants";
 const initialState = {
   orders: [
@@ -34,7 +36,7 @@ const initialState = {
       address: "342 East Nothing Rd",
       unit: "8H",
       message: "lettuce combines greatly with shredded lobster. ",
-      photos: [{}]
+      photos: []
     }
   ],
   loading: false,
@@ -42,17 +44,25 @@ const initialState = {
 };
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ORDER_SUCCESS:
+    case POST_ORDER_BEGIN:
       return {
-        orders: [...action.payload],
-        order_fail: false,
-        order_success: true
+        ...state,
+        loading: true,
+        error: null
       };
-    case ORDER_FAIL:
+    case POST_ORDER_SUCCESS:
       return {
-        orders: [state],
-        order_fail: true,
-        order_success: false
+        ...state,
+        loading: false,
+        error: null,
+        orders: [...state.orders, ...action.payload]
+      };
+    case POST_ORDER_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        orders: []
       };
     case FETCH_ORDERS_BEGIN:
       return { ...state, loading: true, error: null };

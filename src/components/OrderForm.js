@@ -1,20 +1,13 @@
+import "react-quill/dist/quill.snow.css";
+
 import React, { Component } from "react";
+
+import ReactQuill from "react-quill";
 import { TextField } from "@material-ui/core";
 import { connect } from "react-redux";
-import { message } from "../actions/message";
-// const styles = {
-//   textField: {
-//     // marginLeft: theme.spacing(2),
-//     // marginRight: theme.spacing(2),
-//     width: 200
-//   },
-//   dense: {
-//     marginTop: 19
-//   },
-//   menu: {
-//     width: 200
-//   }
-// };
+import { formDataChange } from "../actions/formDataChange";
+
+//text fields that get plugged into MessageForm
 
 class OrderForm extends Component {
   render() {
@@ -80,16 +73,17 @@ class OrderForm extends Component {
             this.props.formDataChange([e.target.name, e.target.value])
           }
         />
-        <TextField
+        <br />
+        <ReactQuill
           label="Include a Message"
           margin="normal"
           // className={classes.textField}
-          style={{ width: 200, marginLeft: 2, marginRight: 2 }}
+          style={{ width: "auto", marginLeft: 2, marginRight: 2 }}
           name="message"
-          onChange={e =>
-            this.props.formDataChange([e.target.name, e.target.value])
-          }
+          onChange={value => this.props.formDataChange(["message", value])}
         />
+        <br />
+        <br />
       </React.Fragment>
     );
   }
