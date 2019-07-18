@@ -13,6 +13,7 @@ import OrderForm from "../components/OrderForm";
 import { connect } from "react-redux";
 import { domain } from "../actions/constants";
 import { placeOrder } from "../actions/placeOrder";
+import { Redirect } from "react-router";
 import { formDataChange } from "../actions/formDataChange";
 
 //allows file pond to display previews, and validates image file types
@@ -39,7 +40,9 @@ class MessageForm extends Component {
   }
 
   render() {
-    const { formDataChange } = this.props;
+    const { user, formDataChange } = this.props;
+
+    if (user.token) {
     return (
       <React.Fragment>
         <form
@@ -72,12 +75,17 @@ class MessageForm extends Component {
         </form>
       </React.Fragment>
     );
+    } else {
+      return <Redirect to="/" />;
+    }
   }
 }
 
-const mapStatetoProps = state => {
-  return { orders: state.orders, formData: state.formData };
-};
+const mapStatetoProps = state => ({
+  orders: state.orders,
+  formData: state.formData,
+  user: state.auth.user
+});
 
 const mapDispatchtoProps = {
   placeOrder,
