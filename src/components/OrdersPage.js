@@ -16,6 +16,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import OrderListItem from "./OrderListItem";
 import DisplayOrder from "./DisplayOrder";
 import NavBar from "./NavBar";
+import DisplayUserOrder from "./DisplayUserOrder";
 
 const drawerWidth = 300;
 
@@ -141,7 +142,7 @@ export default function OrdersPage(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        <DisplayOrder
+        <DisplayUserOrder
           order={orders.find(item => item.id === match.params.id)}
         />
       </main>

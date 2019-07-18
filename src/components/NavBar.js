@@ -45,7 +45,7 @@ export default function NavBar() {
           <Tabs variant="fullWidth" value={value} onChange={handleChange}>
             <LinkTab label="Send Message" to="/send" />
             <LinkTab label="Orders" to="/orders" />
-            <LinkTab label="Logout" to="/logout" />
+            <Tab label="Logout" href="/" />
           </Tabs>
         </AppBar>
       </div>

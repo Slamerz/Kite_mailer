@@ -12,10 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import MadeWithLove from "./MadeWithLoveStatement";
 import Splash from "./Splash";
-// import Logo from "./LogoTemplate";
-// import backgroundImage from "../images/bkg.jpg"
 
-// import "../public/images/bkg.jpg";
 
 const useStyles = makeStyles(theme => ({
   root: {

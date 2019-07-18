@@ -26,10 +26,17 @@ export default function DisplayOrder(props) {
   return (
     <div>
       <Typography paragraph>
-        {addressee.firstName} {addressee.lastName} | {addresseeId}
-        <br /> {facilityName} | unit: {unit}
+        Recipient {addressee.firstName} {addressee.lastName}
         <br />
-        {address}
+        Facility Name: {facilityName}
+        <br/>
+        Facility Address: {address}
+        <br/>
+        Recipients Identification Number: {addresseeId}
+
+        <br /> Recipients Unit: {unit}
+        <br />
+
       </Typography>
       <Divider />
       <Typography paragraph>{message}</Typography>
