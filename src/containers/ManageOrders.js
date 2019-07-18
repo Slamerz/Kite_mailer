@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import React, { Component } from "react";
 import { fetchOrders } from "../actions";
 import OrdersPage from "../components/OrdersPage";
-import {Redirect} from "react-router";
+import { Redirect } from "react-router";
 
 class ManageOrders extends Component {
   componentDidMount() {
@@ -20,7 +20,13 @@ class ManageOrders extends Component {
     if (ordersLoading) {
       return <div> Loading...</div>;
     }
-    if (orders) return <OrdersPage orders={orders} match={match} />;
+    if (orders)
+      return (
+        <OrdersPage
+          orders={orders.filter(order => order.senderId === user._id)}
+          match={match}
+        />
+      );
     else return <div />;
   }
 }

@@ -21,7 +21,6 @@ export default (state = initialState, action) => {
     case UPDATE_FORM: {
       let stateCopy = { ...state };
       stateCopy[action.payload.data[0]] = action.payload.data[1];
-      console.log(stateCopy);
       return { ...stateCopy };
     }
     case UPDATE_ADDRESSEE: {

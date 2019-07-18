@@ -55,7 +55,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
-        orders: [...state.orders, ...action.payload]
+        orders: [...state.orders, action.payload.order]
       };
     case POST_ORDER_FAIL:
       return {

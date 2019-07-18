@@ -30,7 +30,7 @@ const url = domain + "/api/pictures";
 class MessageForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
-    this.props.placeOrder(this.props.formData);
+    this.props.placeOrder(this.props.formData, this.props.user._id);
   };
 
   //shows file pond instance is running
@@ -43,38 +43,38 @@ class MessageForm extends Component {
     const { user, formDataChange } = this.props;
 
     if (user.token) {
-    return (
-      <React.Fragment>
-        <form
-          noValidate
-          method="post"
-          autoComplete="off"
-          action="/api/orders"
-          encType="multipart/formdata"
-        >
-          <OrderForm formDataChange={formDataChange} />
-          <FilePond
-            allowFileTypeValidation={true}
-            acceptedFileTypes={["image/*"]}
-            allowFileEncode
-            ref={ref => (this.pond = ref)}
-            files={this.props.photos}
-            allowMultiple={true}
-            maxFiles={10}
-            server={url}
-            oninit={() => this.handleInit()}
-            onprocessfile={(error, files) => {
-              const f = files.serverId;
-              console.log(error, f);
-              formDataChange(["photos", f]);
-            }}
-          />
-          <Button type="submit" onClick={this.handleSubmit}>
-            Submit
-          </Button>
-        </form>
-      </React.Fragment>
-    );
+      return (
+        <React.Fragment>
+          <form
+            noValidate
+            method="post"
+            autoComplete="off"
+            action="/api/orders"
+            encType="multipart/formdata"
+          >
+            <OrderForm formDataChange={formDataChange} />
+            <FilePond
+              allowFileTypeValidation={true}
+              acceptedFileTypes={["image/*"]}
+              allowFileEncode
+              ref={ref => (this.pond = ref)}
+              files={this.props.photos}
+              allowMultiple={true}
+              maxFiles={10}
+              server={url}
+              oninit={() => this.handleInit()}
+              onprocessfile={(error, files) => {
+                const f = files.serverId;
+                console.log(error, f);
+                formDataChange(["photos", f]);
+              }}
+            />
+            <Button type="submit" onClick={this.handleSubmit}>
+              Submit
+            </Button>
+          </form>
+        </React.Fragment>
+      );
     } else {
       return <Redirect to="/" />;
     }

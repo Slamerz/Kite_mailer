@@ -17,9 +17,10 @@ export const updatePhotos = data => ({
 export function formDataChange(data) {
   return dispatch => {
     switch (data[0]) {
-      case "firstName" || "lastName":
+      case "firstName":
         return dispatch(updateAddressee(data));
-
+      case "lastName":
+        return dispatch(updateAddressee(data));
       case "photos":
         return dispatch(updatePhotos(data));
 

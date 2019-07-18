@@ -22,7 +22,7 @@ export const postOrderFailure = error => ({
   payload: { error }
 });
 
-export function placeOrder(data) {
+export function placeOrder(data, userId) {
   console.log(JSON.stringify(data));
   //TODO Remove hard coded senderId
   return dispatch => {
@@ -30,7 +30,7 @@ export function placeOrder(data) {
     return fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...data, senderId: "5d1a29379765acd7a5fa8dbf" })
+      body: JSON.stringify({ ...data, senderId: userId, status: "pending" })
     })
       .then(handleErrors)
       .then(handleJsonResponse)
@@ -39,8 +39,8 @@ export function placeOrder(data) {
         dispatch(postOrderSuccess(result));
         return result;
       })
-      .catch(err => {
-        return dispatch(postOrderFailure(err));
+      .catch(error => {
+        console.log(error);
       });
   };
 }
