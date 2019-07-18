@@ -70,7 +70,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        orders: [...state.orders, ...action.payload.orders]
+        orders: [...action.payload.orders]
       };
     case FETCH_ORDERS_FAILURE:
       return {
