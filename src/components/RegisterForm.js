@@ -11,13 +11,13 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import MadeWithLove from "./MadeWithLoveStatement";
+import Splash from "./Splash";
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100vh"
   },
   image: {
-    backgroundImage: "john-t-OedmBcmHS9Q-unsplash.jpg",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center"
@@ -38,6 +38,12 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  backgroundTemplate: {
+    backgroundImage: "url(../images/LOGIN_SPLASH_TEAL.png)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center"
   }
 }));
 
@@ -51,7 +57,15 @@ export default function RegisterForm(props) {
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Grid
+        item
+        xs={false}
+        sm={4}
+        md={7}
+        className={classes.backgroundTemplate}
+      >
+        <Splash />
+      </Grid>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
