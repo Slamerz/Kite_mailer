@@ -15,7 +15,7 @@ function App() {
       <Route path="/send" exact component={NewOrder} />
       <Route path="/orders" exact component={ManageOrders} />
       <Route path="/orders/:id" component={ManageOrders} />
-      <Route path="/register" exact component={RegisterPage}/>
+      <Route path="/register" exact component={RegisterPage} />
     </Switch>
   );
 }
