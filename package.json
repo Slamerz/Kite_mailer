@@ -9,6 +9,9 @@
     "test": "kite/node_modules/.bin/jest"
   },
   "dependencies": {
+    "expo-cli": "^3.4.0",
+    "global": "^4.4.0",
+    "native-base": "^2.13.8",
     "react": "16.8.1",
     "react-native": "0.61.2"
   },
