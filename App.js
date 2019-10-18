@@ -7,10 +7,12 @@
  */
 
 import React, {useState} from 'react';
-import {StyleSheet, View, Button} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
 import AppHeader from './components/Header';
-// import Start from './Start';
+import DummyComponent from './components/DummyComponent';
+
+import Start from './Start';
 
 const App: () => React$Node = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,23 +25,20 @@ const App: () => React$Node = () => {
     <>
       <AppHeader menuButtonClick={handleMenuClick} menuOpen={menuOpen} />
 
-      {menuOpen && (
-        <View style={styles.dummy}>
-          <Button title="BUTTON"></Button>
-          <Button title="BUTTON"></Button>
-          <Button title="BUTTON"></Button>
-        </View>
-      )}
+      {menuOpen && <DummyComponent />}
       {/* <Start /> */}
+      <View style={styles.screen}>
+        <Text>Home</Text>
+      </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  dummy: {
-    height: 30,
-    width: 150,
-    backgroundColor: 'red',
+  screen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
