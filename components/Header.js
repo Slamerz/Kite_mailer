@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Header, Left, Body, Right, Button, Icon, Title} from 'native-base';
 
@@ -11,7 +11,7 @@ const AppHeader = props => {
   return (
     <Header searchBar style={styles.header}>
       <Left>
-        <MenuButton />
+        <MenuButton click={props.menuButtonClick} menuOpen={props.menuOpen} />
       </Left>
       <Body>
         <Title>KITe</Title>

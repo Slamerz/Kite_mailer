@@ -1,18 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button, Icon} from 'native-base';
 
 const MenuButton = props => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [menuIcon, setMenuIcon] = useState('ios-menu');
-  const handleMenuClick = () => {
-    setMenuOpen(!menuOpen);
-    menuIcon === 'ios-menu'
-      ? setMenuIcon('ios-arrow-down')
-      : setMenuIcon('ios-menu');
-  };
-
+  let menuIcon = props.menuOpen ? 'ios-arrow-down' : 'ios-menu';
   return (
-    <Button transparent onPress={handleMenuClick}>
+    <Button transparent onPress={props.click}>
       <Icon name={menuIcon} />
     </Button>
   );
