@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Setup
+first install the needed dependencies
+ 
+```
+brew install yarn
+brew install node
+brew install watchman
+brew tap AdoptOpenJDK/openjdk
+brew cask install adoptopenjdk8
+npm install -g react-native-cli
+```
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+### Android development environment
+>Setting up your development environment can be somewhat tedious if you're new to Android development. If you're already familiar with Android development, there are a few things you may need to configure. In either case, please make sure to carefully follow the next few steps.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**1. Install Android Studio**\
+Download and install [Android Studio](https://developer.android.com/studio/index.html). Choose a "Custom" setup when prompted to select an installation type. Make sure the boxes next to all of the following are checked:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+* Android SDK
+* Android SDK Platform
+* Performance (Intel ® HAXM)
+* Android Virtual Device
 
-### `npm test`
+Then, click "Next" to install all of these components.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+>If the checkboxes are grayed out, you will have a chance to install these components later on.
 
-### `npm run build`
+Once setup has finalized and you're presented with the Welcome screen, proceed to the next step.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**2. Install the Android SDK**\
+Android Studio installs the latest Android SDK by default. Building a React Native app with native code, however, requires the Android 9 (Pie) SDK in particular. Additional Android SDKs can be installed through the SDK Manager in Android Studio.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+The SDK Manager can be accessed from the "Welcome to Android Studio" screen. Click on "Configure", then select "SDK Manager".
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Android Studio Welcome
 
-### `npm run eject`
+The SDK Manager can also be found within the Android Studio "Preferences" dialog, under Appearance & Behavior → System Settings → Android SDK.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Select the "SDK Platforms" tab from within the SDK Manager, then check the box next to "Show Package Details" in the bottom right corner. Look for and expand the Android 9 (Pie) entry, then make sure the following items are checked:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Android SDK Platform 28
+Intel x86 Atom_64 System Image or Google APIs Intel x86 Atom System Image
+Next, select the "SDK Tools" tab and check the box next to "Show Package Details" here as well. Look for and expand the "Android SDK Build-Tools" entry, then make sure that 28.0.3 is selected.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Finally, click "Apply" to download and install the Android SDK and related build tools.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Configure the ANDROID_HOME environment variable
+The React Native tools require some environment variables to be set up in order to build apps with native code.
 
-## Learn More
+Add the following lines to your $HOME/.bash_profile or $HOME/.bashrc config file:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools 
+```
+`.bash_profile` is specific to bash. If you're using another shell, you will need to edit the appropriate shell-specific config file.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Type `source $HOME/.bash_profile` to load the config into your current shell. Verify that ANDROID_HOME has been added to your path by running `echo $PATH`.
 
-### Code Splitting
+Please make sure you use the correct Android SDK path. You can find the actual location of the SDK in the Android Studio "Preferences" dialog, under Appearance & Behavior → System Settings → Android SDK.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Git Install
+Now that you have all of the components you'll need to run the application you can clone the repo and run `yarn install` to install all of the needed packages and start working!
