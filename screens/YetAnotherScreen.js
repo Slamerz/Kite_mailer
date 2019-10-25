@@ -12,27 +12,17 @@ const AnotherScreen = props => {
         }}
       />
       <Button
-        title="Go to Home Screen"
-        onPress={() => {
-          props.navigation.navigate({routeName: 'Home'});
-        }}
-      />
-      <Button
         title="GoBack"
         onPress={() => {
           props.navigation.goBack();
         }}
       />
+      <Button
+        title="Back to Home"
+        onPress={() => {
+          props.navigation.popToTop();
+        }}
+      />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export default AnotherScreen;
