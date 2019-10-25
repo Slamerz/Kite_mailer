@@ -11,7 +11,7 @@ import {StyleSheet, View, Text} from 'react-native';
 
 import AppHeader from './components/Header';
 import DummyComponent from './components/DummyComponent';
-import RegistrationForm from './components/RegistrationForm'
+import RegistrationForm from './components/RegistrationForm';
 
 import Start from './Start';
 
@@ -26,9 +26,9 @@ const App: () => React$Node = () => {
     <>
       <AppHeader menuButtonClick={handleMenuClick} menuOpen={menuOpen} />
 
-      {menuOpen && <DummyComponent />}
       {/* <Start /> */}
       <RegistrationForm />
+      {menuOpen && <DummyComponent />}
       <View style={styles.screen}>
         <Text>Home</Text>
       </View>

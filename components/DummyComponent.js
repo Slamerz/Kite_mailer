@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
   dummy: {
     height: 30,
     width: 150,
+    position: 'absolute',
+    top: 55,
   },
   button: {
     borderColor: 'brown',
