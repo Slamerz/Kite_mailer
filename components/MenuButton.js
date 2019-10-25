@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Icon} from 'native-base';
+import { Button, Icon } from 'native-base';
 
 const MenuButton = props => {
   let menuIcon = props.menuOpen ? 'ios-arrow-down' : 'ios-menu';
