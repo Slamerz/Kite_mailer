@@ -29,9 +29,9 @@ const App: () => React$Node = () => {
       {/* <Start /> */}
       <RegistrationForm />
       {menuOpen && <DummyComponent />}
-      <View style={styles.screen}>
+      {/* <View style={styles.screen}>
         <Text>Home</Text>
-      </View>
+      </View> */}
     </>
   );
 };
