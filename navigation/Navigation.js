@@ -1,17 +1,14 @@
-import React from 'react-native';
-// import {Ionicons} from '@expo/vector-icons';
+import React from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {HeaderButtons, Item} from 'react-navigation-header-buttons';
+import SettingsButton from '../components/SettingsButton';
+
 import {createStackNavigator} from 'react-navigation-stack';
-import {
-  createTabsNavigator,
-  createMaterialTopTabNavigator,
-  createBottomTabNavigator,
-  createTabNavigator,
-} from 'react-navigation-tabs';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
 
 import Colors from '../constants/Colors';
-import {Icon} from 'react-native';
 
 import DraftScreen from '../screens/DraftScreen';
 import LoginScreen from '../screens/LoginScreen';
@@ -25,7 +22,9 @@ const SentDraftsTabNavigator = createMaterialTopTabNavigator(
       screen: SentMailScreen,
       navigationOptions: {
         tabBarIcon: tabInfo => {
-          return <Icon name="ios-send" size={25} color={tabInfo.tintColor} />;
+          return (
+            <Ionicons name="md-send" size={25} color={tabInfo.tintColor} />
+          );
         },
       },
     },
@@ -34,7 +33,7 @@ const SentDraftsTabNavigator = createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarIcon: tabInfo => {
           return (
-            <Icon name="ios-document" size={25} color={tabInfo.tintColor} />
+            <Ionicons name="md-document" size={25} color={tabInfo.tintColor} />
           );
         },
       },
@@ -42,18 +41,35 @@ const SentDraftsTabNavigator = createMaterialTopTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: Colors.secondary,
+      activeTintColor: Colors.primary,
+      inactiveTintColor: 'gray',
+      indicatorStyle: {backgroundColor: Colors.primary},
+      showIcon: true,
+      style: {
+        backgroundColor: 'white',
+      },
     },
   },
 );
 
-SentDraftsTabNavigator.navigationOptions = {
+SentDraftsTabNavigator.navigationOptions = ({navigation}) => ({
   headerTitle: 'KITe Home',
+  headerRight: (
+    <HeaderButtons HeaderButtonComponent={SettingsButton}>
+      <Item
+        title="Settings"
+        iconName="md-settings"
+        onPress={() => {
+          navigation.navigate({routeName: 'SettingsScreen'});
+        }}
+      />
+    </HeaderButtons>
+  ),
   headerStyle: {
     backgroundColor: Colors.primary,
   },
   headerTintColor: Colors.secondary,
-};
+});
 
 const Navigator = createStackNavigator({
   Home: SentDraftsTabNavigator,

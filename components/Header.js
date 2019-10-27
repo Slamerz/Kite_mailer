@@ -18,11 +18,11 @@ const AppHeader = props => {
       </Body>
       <Right>
         {/* <Input /> */}
-        <Button transparent>
-          <Icon name="search" onPress={() => {}} />
+        <Button transparent onPress={() => {}}>
+          <Icon name="search" />
         </Button>
-        <Button transparent>
-          <Icon name="more" onPress={() => {}} />
+        <Button transparent onPress={() => {}}>
+          <Icon name="more" />
         </Button>
       </Right>
     </Header>
