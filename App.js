@@ -11,7 +11,7 @@ import {StyleSheet, View, Text} from 'react-native';
 
 import AppHeader from './components/Header';
 import DummyComponent from './components/DummyComponent';
-import AppNavigator from './navigation/AppNavigation';
+import Navigator from './navigation/Navigation';
 
 import Start from './Start';
 
@@ -23,7 +23,7 @@ const App: () => React$Node = () => {
   };
 
   return (
-    <AppNavigator />
+    <Navigator />
     // <>
     //   <AppHeader menuButtonClick={handleMenuClick} menuOpen={menuOpen} />
 

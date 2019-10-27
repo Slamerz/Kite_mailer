@@ -3,28 +3,22 @@ import {View, Text, StyleSheet, Button} from 'react-native';
 
 import Colors from '../constants/Colors';
 
-const YetAnotherScreen = props => {
+const DraftScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Yet Another Screen</Text>
+      <Text>Drafts</Text>
       <Button
-        title="Go to Home Screen"
+        title="Sent"
         onPress={() => {
-          props.navigation.navigate({routeName: 'Home'});
-        }}
-      />
-      <Button
-        title="Back to Home"
-        onPress={() => {
-          props.navigation.popToTop();
+          props.navigation.navigate({routeName: 'SentMailScreen'});
         }}
       />
     </View>
   );
 };
 
-YetAnotherScreen.navigationOptions = {
-  headerTitle: 'Yet Another Screen',
+DraftScreen.navigationOptions = {
+  headerTitle: 'KITe Drafts',
   headerStyle: {
     backgroundColor: Colors.primary,
   },
@@ -39,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default YetAnotherScreen;
+export default DraftScreen;

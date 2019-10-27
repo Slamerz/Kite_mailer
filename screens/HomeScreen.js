@@ -1,6 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
+import Colors from '../constants/Colors';
+
 const HomeScreen = props => {
   return (
     <View style={styles.screen}>
@@ -11,6 +13,12 @@ const HomeScreen = props => {
           props.navigation.navigate({routeName: 'Another'});
         }}
       />
+      <Button
+        title="Go to Login"
+        onPress={() => {
+          props.navigation.navigate({routeName: 'LoginScreen'});
+        }}
+      />
       {/* <Button
         title="GoBack"
         onPress={() => {
@@ -19,6 +27,14 @@ const HomeScreen = props => {
       /> */}
     </View>
   );
+};
+
+HomeScreen.navigationOptions = {
+  headerTitle: 'Home',
+  headerStyle: {
+    backgroundColor: Colors.primary,
+  },
+  headerTintColor: Colors.secondary,
 };
 
 const styles = StyleSheet.create({
