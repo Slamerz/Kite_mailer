@@ -7,6 +7,12 @@ const DraftScreen = props => {
   return (
     <View style={styles.screen}>
       <Text>Drafts</Text>
+      <Button
+        title="New Message"
+        onPress={() => {
+          props.navigation.navigate({routeName: 'CreateMail'});
+        }}
+      />
     </View>
   );
 };

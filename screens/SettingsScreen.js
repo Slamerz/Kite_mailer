@@ -10,7 +10,7 @@ const SettingsScreen = props => {
       <Button
         title="Logout"
         onPress={() => {
-          props.navigation.navigate({routeName: 'LoginScreen'});
+          props.navigation.navigate({routeName: 'SignIn'});
         }}
       />
     </View>
