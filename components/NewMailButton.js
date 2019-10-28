@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 50,
-    color: Colors.gold,
+    color: Colors.secondary,
   },
 });
 
