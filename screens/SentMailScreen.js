@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {View, Text, StyleSheet} from 'react-native';
+import NewMailButton from '../components/NewMailButton';
 
 import Colors from '../constants/Colors';
 
@@ -8,12 +8,7 @@ const SentMailScreen = props => {
   return (
     <View style={styles.screen}>
       <Text>Sent Mail</Text>
-      <Button
-        title="New Message"
-        onPress={() => {
-          props.navigation.navigate({routeName: 'CreateMail'});
-        }}
-      />
+      <NewMailButton {...props} />
     </View>
   );
 };
