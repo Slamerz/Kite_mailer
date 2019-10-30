@@ -20,7 +20,6 @@ const LoginScreen = props => {
       }}>
       <View style={styles.screen}>
         <LoginForm {...props} />
-        <Text>Login</Text>
       </View>
     </TouchableWithoutFeedback>
   );

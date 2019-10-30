@@ -16,7 +16,7 @@ const RegistrationScreen = props => {
       <Button
         title="Submit"
         onPress={() => {
-          props.navigation.navigate({routeName: 'SentMailScreen'});
+          props.navigation.popToTop();
         }}
       />
     </View>

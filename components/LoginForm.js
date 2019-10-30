@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {View, Text, StyleSheet, TextInput, Keyboard} from 'react-native';
 import {Button} from 'native-base';
 
 const LoginForm = props => {
@@ -40,8 +40,14 @@ const LoginForm = props => {
           style={styles.input}
         />
       </View>
-      <Button transparent title="Login">
-        <Text>Login</Text>
+      <Button
+        transparent
+        title="Login"
+        onPress={() => {
+          Keyboard.dismiss();
+          props.navigation.popToTop();
+        }}>
+        <Text style={styles.text}>login</Text>
       </Button>
     </View>
   );
@@ -60,6 +66,10 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 18,
+  },
+  text: {
+    fontSize: 35,
+    color: 'grey',
   },
 });
 
