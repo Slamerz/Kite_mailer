@@ -1,25 +1,28 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
 import Colors from '../constants/Colors';
 
+import LoginForm from '../components/LoginForm';
+
 const LoginScreen = props => {
   return (
-    <View style={styles.screen}>
-      <Text>Login</Text>
-      <Button
-        title="Go to Sign Up"
-        onPress={() => {
-          props.navigation.navigate({routeName: 'RegistrationScreen'});
-        }}
-      />
-      <Button
-        title="Submit"
-        onPress={() => {
-          props.navigation.navigate({routeName: 'SentMailScreen'});
-        }}
-      />
-    </View>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
+      <View style={styles.screen}>
+        <LoginForm {...props} />
+        <Text>Login</Text>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
