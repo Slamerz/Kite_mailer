@@ -2,7 +2,7 @@ import {createSwitchNavigator} from 'react-navigation';
 import {createAppContainer} from 'react-navigation';
 
 import LoginRegisterTabNavigator from './LoginRegisterTabNavigator';
-import Navigator from './Navigation';
+import Navigator from './Navigator';
 
 const MainNavigator = createSwitchNavigator({
   SignIn: LoginRegisterTabNavigator,

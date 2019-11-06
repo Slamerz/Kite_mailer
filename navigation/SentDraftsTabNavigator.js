@@ -3,21 +3,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import SettingsButton from '../components/SettingsButton';
 
-import {createStackNavigator} from 'react-navigation-stack';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createAppContainer} from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
 import DraftScreen from '../screens/DraftScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegistrationScreen from '../screens/RegistrationScreen';
 import SentMailScreen from '../screens/SentMailScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import GalleryScreen from '../screens/GalleryScreen';
-import MailTemplateScreen from '../screens/MailTemplateScreen';
-import MessageScreen from '../screens/MessageScreen';
 
 const SentDraftsTabNavigator = createMaterialTopTabNavigator(
   {

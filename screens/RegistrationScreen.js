@@ -8,12 +8,6 @@ const RegistrationScreen = props => {
     <View style={styles.screen}>
       <Text>Sign Up</Text>
       <Button
-        title="Go to Login"
-        onPress={() => {
-          props.navigation.navigate({routeName: 'LoginScreen'});
-        }}
-      />
-      <Button
         title="Submit"
         onPress={() => {
           props.navigation.navigate({routeName: 'Navigator'});
