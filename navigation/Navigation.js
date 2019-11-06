@@ -11,7 +11,7 @@ const Navigator = createStackNavigator({
   Home: SentDraftsTabNavigator,
   SettingsScreen: {screen: SettingsScreen},
   CreateMail: TemplateGalleryMessageTabNavigator,
-  SignIn: LoginRegisterTabNavigator,
+  // SignIn: LoginRegisterTabNavigator,
 });
 
 export default createAppContainer(Navigator);

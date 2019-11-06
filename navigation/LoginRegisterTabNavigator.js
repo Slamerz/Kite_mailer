@@ -18,6 +18,7 @@ const LoginRegisterTabNavigator = createMaterialTopTabNavigator(
             <Ionicons name="md-log-in" size={25} color={tabInfo.tintColor} />
           );
         },
+        tabBarLabel: 'Returning User',
       },
     },
     Register: {
@@ -28,7 +29,7 @@ const LoginRegisterTabNavigator = createMaterialTopTabNavigator(
             <Ionicons name="md-clipboard" size={25} color={tabInfo.tintColor} />
           );
         },
-        tabBarLabel: 'Sign Up',
+        tabBarLabel: 'New User',
       },
     },
   },

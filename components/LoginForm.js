@@ -45,7 +45,7 @@ const LoginForm = props => {
         title="Login"
         onPress={() => {
           Keyboard.dismiss();
-          props.navigation.popToTop();
+          props.navigation.navigate({routeName: 'Navigator'});
         }}>
         <Text style={styles.text}>login</Text>
       </Button>
