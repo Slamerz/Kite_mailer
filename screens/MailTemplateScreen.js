@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const AnotherScreen = props => {
+const MailTemplateScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Another Screen</Text>
+      <Text>Mail Template</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnotherScreen;
+export default MailTemplateScreen;
