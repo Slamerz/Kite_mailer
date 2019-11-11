@@ -12,7 +12,7 @@ const Input = props => {
       style={{...styles.input, ...props.style}}
       onChangeText={text => onChangeText(text)}
       value={value}
-      placeholder="Search"
+      placeholder={props.placeholder}
     />
   );
 };
