@@ -4,7 +4,7 @@ import { Header } from 'native-base'
 
 const SentMailItemExpand = props => {
     return (
-        <Header>Filler</Header>
+        <Header>Sent Mail</Header>
     )
 }
 
