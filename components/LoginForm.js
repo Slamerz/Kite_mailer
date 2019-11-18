@@ -5,6 +5,27 @@ import {Button} from 'native-base';
 const LoginForm = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [signIn, setSignedIn] = useState(false)
+
+  signIn = async () => {
+    try {
+      const result = await Expo.Google.logInAsync({
+        androidClientId: androidClientId,
+        scopes: ["profile", "email"]
+      })
+      if (result.type === "success") {
+        this.setState({
+          signedIn: true,
+          name: result.user.name,
+          photoUrl: result.user.photoUrl
+        })
+      } else {
+        console.log("cancelled")
+      }
+} catch (e) {
+      console.log("error", e)
+    }
+}
 
   return (
     <View style={styles.container}>
@@ -47,8 +68,14 @@ const LoginForm = props => {
           Keyboard.dismiss();
           props.navigation.navigate({routeName: 'Navigator'});
         }}>
-        <Text style={styles.text}>login</Text>
+        <Text style={styles.text}>Login</Text>
       </Button>
+      <Button 
+      transparent
+      title="Google Sign-in"
+      onPress={signInHandler}>
+      </Button>
+        <Text style={styles.text}>Login with Google</Text>
     </View>
   );
 };
