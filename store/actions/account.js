@@ -1,8 +1,13 @@
 import {domain, jsonHeaders, handleJsonResponse} from './constants';
+import {login} from './auth';
 
 export const REGISTER = 'REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
+
+export const GET_ACCOUNT = 'GET_ACCOUNT';
+export const GET_ACCOUNT_SUCCESS = 'GET_ACCOUNT_SUCCESS';
+export const GET_ACCOUNT_FAIL = 'GET_ACCOUNT_FAIL';
 
 export const UPDATE_ACCOUNT = 'UPDATE_ACCOUNT';
 export const UPDATE_ACCOUNT_SUCCESS = 'UPDATE_ACCOUNT_SUCCESS';
@@ -33,6 +38,43 @@ export const register = registerData => dispatch => {
     .catch(err => {
       return Promise.reject(
         dispatch({type: REGISTER_FAIL, payload: err.message}),
+      );
+    });
+};
+
+export const registerAndLoginAndGetAccount = registrationData => dispatch => {
+  return dispatch(register(registrationData))
+    .then(() => {
+      return dispatch(
+        login({
+          email: registrationData.email,
+          password: registrationData.password,
+        }),
+      );
+    })
+    .then(() => {
+      return dispatch(getAccount());
+    });
+};
+
+export const getAccount = () => (dispatch, getState) => {
+  const id = getState().auth.login.id;
+  dispatch({type: GET_ACCOUNT});
+
+  return fetch(url + `/${id}`, {
+    method: 'GET',
+    headers: jsonHeaders,
+  })
+    .then(handleJsonResponse)
+    .then(result => {
+      return dispatch({
+        type: GET_ACCOUNT_SUCCESS,
+        payload: result,
+      });
+    })
+    .catch(err => {
+      return Promise.reject(
+        dispatch({type: GET_ACCOUNT_FAIL, payload: err.message}),
       );
     });
 };

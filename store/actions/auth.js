@@ -1,4 +1,5 @@
 import {domain, jsonHeaders, handleJsonResponse} from './constants';
+import {getAccount} from './account';
 
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -29,6 +30,14 @@ export const login = loginData => dispatch => {
     .catch(err => {
       return Promise.reject(dispatch({type: LOGIN_FAIL, payload: err.message}));
     });
+};
+
+export const loginAndGetAccount = loginData => dispatch => {
+  return dispatch(() => {
+    return login(loginData);
+  }).then(() => {
+    return dispatch(getAccount());
+  });
 };
 
 export const logout = () => (dispatch, getState) => {
