@@ -18,20 +18,8 @@ const LoginForm = props => {
   const [password, setPassword] = useState('');
   const [emailMissing, setEmailMissing] = useState(null);
   const [passwordMissing, setPasswordMissing] = useState(null);
-  const [err, setErr] = useState(null);
 
   const dispatch = useDispatch();
-
-  if (err) {
-    return (
-      <View>
-        <Text>Something went wrong</Text>
-        <Button onPress={() => setErr(null)}>
-          <TextNB>Try Again?</TextNB>
-        </Button>
-      </View>
-    );
-  }
 
   return (
     <View style={styles.container}>
@@ -91,13 +79,15 @@ const LoginForm = props => {
               //     props.navigation.navigate({routeName: 'Navigator'});
               //   })
               //   .catch(err => {
-              //     setErr(err);
+              //     setPassword('');
+              //     setEmail('');
               //   });
             }
           }}>
           <Text style={styles.text}>login</Text>
         </Button>
       )}
+      {props.loginError && <Text> Something went wrong. Please try again</Text>}
     </View>
   );
 };
