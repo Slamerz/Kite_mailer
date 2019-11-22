@@ -1,10 +1,37 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput, Keyboard} from 'react-native';
-import {Button} from 'native-base';
+import {connect} from 'react-redux';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  Keyboard,
+  ActivityIndicator,
+} from 'react-native';
+import {Button, Text as TextNB} from 'native-base';
+import {useDispatch} from 'react-redux';
+import {login} from '../store/actions/auth';
+import Colors from '../constants/Colors';
 
 const LoginForm = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailMissing, setEmailMissing] = useState(null);
+  const [passwordMissing, setPasswordMissing] = useState(null);
+  const [err, setErr] = useState(null);
+
+  const dispatch = useDispatch();
+
+  if (err) {
+    return (
+      <View>
+        <Text>Something went wrong</Text>
+        <Button onPress={() => setErr(null)}>
+          <TextNB>Try Again?</TextNB>
+        </Button>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -24,6 +51,7 @@ const LoginForm = props => {
           style={styles.input}
         />
       </View>
+      {emailMissing && <Text style={{color: 'red'}}>{emailMissing}</Text>}
       <View style={styles.inputContainer}>
         <TextInput
           value={password}
@@ -40,15 +68,36 @@ const LoginForm = props => {
           style={styles.input}
         />
       </View>
-      <Button
-        transparent
-        title="Login"
-        onPress={() => {
-          Keyboard.dismiss();
-          props.navigation.navigate({routeName: 'Navigator'});
-        }}>
-        <Text style={styles.text}>login</Text>
-      </Button>
+      {passwordMissing && <Text style={{color: 'red'}}>{passwordMissing}</Text>}
+      {props.loginLoading ? (
+        <ActivityIndicator size="large" color={Colors.primary} />
+      ) : (
+        <Button
+          transparent
+          title="Login"
+          onPress={() => {
+            Keyboard.dismiss();
+            setPasswordMissing(null);
+            setEmailMissing(null);
+            const emailRegex = /\S+@\S+\.\S+/;
+            if (!emailRegex.test(email)) {
+              setEmailMissing('Please enter an email address');
+            } else if (password.trim().length < 6) {
+              setPasswordMissing('Please enter a password');
+            } else {
+              props.navigation.navigate({routeName: 'Navigator'});
+              // dispatch(login({email: email, password: password}))
+              //   .then(() => {
+              //     props.navigation.navigate({routeName: 'Navigator'});
+              //   })
+              //   .catch(err => {
+              //     setErr(err);
+              //   });
+            }
+          }}>
+          <Text style={styles.text}>login</Text>
+        </Button>
+      )}
     </View>
   );
 };
@@ -73,4 +122,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+const mapStateToProps = state => {
+  return {
+    loginLoading: state.auth.loginLoading,
+    login: state.auth.login,
+    loginError: state.auth.loginError,
+  };
+};
+const mapDispatchToProps = {
+  login,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LoginForm);
