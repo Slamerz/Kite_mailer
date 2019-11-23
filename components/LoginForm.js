@@ -8,7 +8,7 @@ import {
   Keyboard,
   ActivityIndicator,
 } from 'react-native';
-import {Button, Text as TextNB} from 'native-base';
+import {Button} from 'native-base';
 import {useDispatch} from 'react-redux';
 import {login} from '../store/actions/auth';
 import Colors from '../constants/Colors';
