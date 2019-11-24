@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import { Icon,Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
 
 const SentMailItem = props => {
     return (
@@ -18,6 +18,9 @@ const SentMailItem = props => {
               </Body>
               <Right>
                 <Text note>09 Sept 19</Text>
+              </Right>
+              <Right>
+                <Icon name="arrow-forward" />
               </Right>
             </ListItem>
           </List>
