@@ -1,3 +1,5 @@
+import {AsyncStorage} from 'react-native';
+
 import {domain, jsonHeaders, handleJsonResponse} from './constants';
 import {getAccount} from './account';
 
@@ -32,6 +34,19 @@ export const login = loginData => dispatch => {
     });
 };
 
+export const loginAndSaveLogin = loginData => (dispatch, getState) => {
+  return dispatch(() => {
+    return login(loginData);
+  }).then(() => {
+    const token = getState().auth.login.token;
+    const userId = getState().auth.login.id;
+    const expirationDate = new Date(
+      new Date().getTime() + parseInt(getState().auth.login.exiresIn) * 1000,
+    );
+    return saveDataToStorage(token, userId, expirationDate);
+  });
+};
+
 export const loginAndGetAccount = loginData => dispatch => {
   return dispatch(() => {
     return login(loginData);
@@ -62,4 +77,15 @@ export const logout = () => (dispatch, getState) => {
         dispatch({type: LOGOUT_FAIL, payload: err.message}),
       );
     });
+};
+
+const saveDataToStorage = (token, userId, expirationDate) => {
+  AsyncStorage.setItem(
+    'userData',
+    JSON.stringify({
+      token: token,
+      userId: userId,
+      expirationDate: expirationDate.toISOString(),
+    }),
+  );
 };
