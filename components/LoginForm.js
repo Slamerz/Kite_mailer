@@ -60,32 +60,34 @@ const LoginForm = props => {
       {props.loginLoading ? (
         <ActivityIndicator size="large" color={Colors.primary} />
       ) : (
-        <Button
-          transparent
-          title="Login"
-          onPress={() => {
-            Keyboard.dismiss();
-            setPasswordMissing(null);
-            setEmailMissing(null);
-            const emailRegex = /\S+@\S+\.\S+/;
-            if (!emailRegex.test(email)) {
-              setEmailMissing('Please enter an email address');
-            } else if (password.trim().length < 6) {
-              setPasswordMissing('Please enter a password');
-            } else {
-              props.navigation.navigate({routeName: 'Navigator'});
-              // dispatch(login({email: email, password: password}))
-              //   .then(() => {
-              //     props.navigation.navigate({routeName: 'Navigator'});
-              //   })
-              //   .catch(err => {
-              //     setPassword('');
-              //     setEmail('');
-              //   });
-            }
-          }}>
-          <Text style={styles.text}>login</Text>
-        </Button>
+        <View style={styles.loginButton}>
+          <Button
+            transparent
+            title="Login"
+            onPress={() => {
+              Keyboard.dismiss();
+              setPasswordMissing(null);
+              setEmailMissing(null);
+              const emailRegex = /\S+@\S+\.\S+/;
+              if (!emailRegex.test(email)) {
+                setEmailMissing('Please enter an email address');
+              } else if (password.trim().length < 6) {
+                setPasswordMissing('Please enter a password');
+              } else {
+                props.navigation.navigate({routeName: 'Navigator'});
+                // dispatch(login({email: email, password: password}))
+                //   .then(() => {
+                //     props.navigation.navigate({routeName: 'Navigator'});
+                //   })
+                //   .catch(err => {
+                //     setPassword('');
+                //     setEmail('');
+                //   });
+              }
+            }}>
+            <Text style={styles.text}>login</Text>
+          </Button>
+        </View>
       )}
       {props.loginError && <Text> Something went wrong. Please try again</Text>}
     </View>
@@ -97,6 +99,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   inputContainer: {
+    paddingVertical: 5,
     // width: '90%',
     // borderBottomColor: 'grey',
     // borderBottomWidth: 1,
@@ -107,8 +110,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   text: {
-    fontSize: 35,
+    fontSize: 40,
     color: 'grey',
+  },
+  loginButton: {
+    paddingTop: 40,
   },
 });
 
