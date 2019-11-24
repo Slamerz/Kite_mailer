@@ -10,12 +10,14 @@ const SentMailItemExpand = props => {
           <Card style={{flex: 0}}>
             <CardItem>
               <Left>
+              
                 <Thumbnail source={{uri: 'Image URL'}} />
                 <Body>
                   <Text>Message Header here</Text>
                   <Text note>email@email.com</Text>
                 </Body>
               </Left>
+              <Icon name="arrow-up" />
             </CardItem>
             <CardItem>
               <Body>

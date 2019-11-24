@@ -1,14 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 // import NewMailButton from '../components/NewMailButton';
-import SentMailItem from '../components/SentMailItem'
+import SentMailItemExpanded from '../components/SentMailItemExpanded'
 // import Colors from '../constants/Colors';
 
 const SentMailScreen = props => {
   return (
     <View style={styles.screen}>
       {/* <Text>Sent Mail</Text> */}
-      <SentMailItem {...props} />
+      <SentMailItemExpanded {...props} />
     </View>
   );
 };
