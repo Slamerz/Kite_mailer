@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 
 import Colors from '../constants/Colors';
+// import RegistrationForm from '../components/RegistrationForm';
 
 const RegistrationScreen = props => {
   return (

@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
 import NewMailButton from '../components/NewMailButton';
 
 import Colors from '../constants/Colors';
 
 const SentMailScreen = props => {
+  const sentMail = useSelector(state => state.mail.sentMail);
+
   return (
     <View style={styles.screen}>
       <Text>Sent Mail</Text>
