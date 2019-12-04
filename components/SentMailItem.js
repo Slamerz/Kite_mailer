@@ -20,7 +20,8 @@ const SentMailItem = props => {
               <Text>{this.props.facilityName}</Text>
             </Body>
             <Right>
-              <Text note>{this.props.saveTime}</Text>
+              <Text>{this.props.status}</Text>
+              <Text>{this.props.saveTime}</Text>
             </Right>
           </Content>
         </Container>
