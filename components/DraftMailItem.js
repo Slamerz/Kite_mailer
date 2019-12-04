@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Header, Text, StyleSheet } from 'native-base'
+import { Text, StyleSheet, Left, Right, Content, Container } from 'native-base'
 
 const DraftMailItem = props => {
     const [email] = useState(''); //from User model
@@ -9,18 +9,23 @@ const DraftMailItem = props => {
     return (
         <View style={styles.container}>
             <View style={styles.draftcontainer}>
-                <Link>
-                    <Text>
-                        {this.props.email}
-                        {this.props.addressee}
-                        {this.props.facilityName}
-                    </Text>
-                    <Text>
-                        {this.props.status}
-                        {this.props.savedTime}
-                    </Text>
-                </Link>
-                <Header>Filler</Header>
+                <Container>
+                    <Content>
+                        <Link>
+                            <Left>
+                                <Text>
+                                    <Text>{this.props.email}</Text>
+                                    <Text>{this.props.addressee}</Text>
+                                    <Text>{this.props.facilityName}</Text>
+                                </Text>
+                            </Left>
+                            <Right>
+                                <Text>{this.props.status}</Text>
+                                <Text>{this.props.savedTime}</Text>
+                            </Right>
+                        </Link>
+                    </Content>
+                </Container>
             </View>
         </View>
     )
