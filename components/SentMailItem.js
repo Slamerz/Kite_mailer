@@ -1,32 +1,43 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Icon,Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Icon,
+  Container,
+  Header,
+  Content,
+  List,
+  ListItem,
+  Left,
+  Body,
+  Right,
+  Thumbnail,
+  Text,
+  Card,
+  CardItem,
+} from 'native-base';
+import SentMailItemSmall from './SentMailItemSmall';
+import SentMailItemExpanded from './SentMailItemExpanded';
 
 const SentMailItem = props => {
-    return (
-        <Container>
-        <Header />
-        <Content >
-          <List>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={{ uri: 'Image URL' }} />
-              </Left>
-              <Body>
-                <Text>Jane Doe</Text>
-                <Text note>email@email.com</Text>
-              </Body>
-              <Right>
-                <Text note>09 Sept 19</Text>
-              </Right>
-              <Right>
-                <Icon name="arrow-forward" />
-              </Right>
-            </ListItem>
-          </List>
-        </Content>
-      </Container>
-    )
-}
+  const [expanded, setExpanded] = useState(false);
 
-export default SentMailItem
+  const handleSelect = () => {
+    setExpanded(!expanded);
+  };
+
+  return (
+    <TouchableOpacity onPress={handleSelect}>
+      <View style={styles.view}>
+        {expanded && (
+          <View style={styles.view}>
+            <SentMailItemExpanded />
+          </View>
+        )}
+        {!expanded && <SentMailItemSmall {...props} />}
+      </View>
+    </TouchableOpacity>
+  );
+};
+const styles = StyleSheet.create({view: {paddingVertical: 2}});
+
+export default SentMailItem;
