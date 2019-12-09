@@ -9,6 +9,9 @@ const SentMailItemExpand = props => {
         <CardItem>
           <Text>Large Card</Text>
         </CardItem>
+        <CardItem>
+          <Text>More</Text>
+        </CardItem>
       </Card>
     </View>
   );
