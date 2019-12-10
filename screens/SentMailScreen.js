@@ -1,10 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, ScrollView, SafeAreaView} from 'react-native';
-// import NewMailButton from '../components/NewMailButton';
-import SentMailItemExpanded from '../components/SentMailItemExpanded';
-import SentMailItem from '../components/SentMailItem';
+import {StyleSheet, ScrollView, SafeAreaView} from 'react-native';
+import NewMailButton from '../components/NewMailButton';
 import SentMailList from '../components/SentMailList';
-// import Colors from '../constants/Colors';
 
 const SentMailScreen = props => {
   return (
@@ -12,6 +9,7 @@ const SentMailScreen = props => {
       <ScrollView>
         <SentMailList />
       </ScrollView>
+      <NewMailButton {...props} />
     </SafeAreaView>
   );
 };
@@ -20,7 +18,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
   },
 });
 

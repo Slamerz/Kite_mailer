@@ -1,23 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {
-  Icon,
-  Container,
-  Header,
-  Content,
-  List,
-  ListItem,
-  Left,
-  Body,
-  Right,
-  Thumbnail,
-  Text,
-  Card,
-  CardItem,
-  Button,
-} from 'native-base';
+import {Icon, Right, Text, Card, CardItem, Button} from 'native-base';
 import SentMailItemSmall from './SentMailItemSmall';
-import SentMailItemExpanded from './SentMailItemExpanded';
 
 const SentMailItem = props => {
   const [expanded, setExpanded] = useState(false);
@@ -46,10 +30,7 @@ const SentMailItem = props => {
               </View>
               <Right>
                 <Button transparent onPress={handleSelect}>
-                  <Icon
-                    name="md-close"
-                    style={{color: 'black', fontSize: 30}}
-                  />
+                  <Icon name="md-close" style={styles.icon} />
                 </Button>
               </Right>
             </CardItem>
@@ -67,6 +48,9 @@ const SentMailItem = props => {
     </View>
   );
 };
-const styles = StyleSheet.create({view: {paddingVertical: 2}});
+const styles = StyleSheet.create({
+  view: {paddingVertical: 2},
+  icon: {color: 'gray', fontSize: 30},
+});
 
 export default SentMailItem;
