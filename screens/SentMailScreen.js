@@ -4,6 +4,8 @@ import NewMailButton from '../components/NewMailButton';
 import SentMailList from '../components/SentMailList';
 
 const SentMailScreen = props => {
+  const sentMail = useSelector(state => state.mail.sentMail);
+
   return (
     <SafeAreaView>
       <ScrollView>
