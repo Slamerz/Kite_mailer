@@ -29,7 +29,7 @@ const SentMailItemSmall = props => {
 
 const styles = StyleSheet.create({
   card: {
-    width: '80%',
+    // width: '80%',
   },
 });
 

@@ -41,7 +41,7 @@ const SentMailItem = props => {
         </View>
       )}
       {!expanded && (
-        <TouchableOpacity onPress={handleSelect}>
+        <TouchableOpacity onPress={handleSelect} style={{width: '80%'}}>
           <SentMailItemSmall {...props} />
         </TouchableOpacity>
       )}
