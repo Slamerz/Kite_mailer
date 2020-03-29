@@ -1,27 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {useSelector} from 'react-redux';
+import {ScrollView, SafeAreaView} from 'react-native';
 import NewMailButton from '../components/NewMailButton';
-
-import Colors from '../constants/Colors';
+import SentMailList from '../components/SentMailList';
 
 const SentMailScreen = props => {
-  const sentMail = useSelector(state => state.mail.sentMail);
-
   return (
-    <View style={styles.screen}>
-      <Text>Sent Mail</Text>
+    <SafeAreaView>
+      <ScrollView>
+        <SentMailList />
+      </ScrollView>
       <NewMailButton {...props} />
-    </View>
+    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default SentMailScreen;
