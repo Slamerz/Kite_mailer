@@ -20,9 +20,10 @@ const AddressTabNavigator = createMaterialTopTabNavigator(
             <Ionicons name="md-contact" size={25} color={tabInfo.tintColor} />
           );
         },
+        tabBarLabel: "Address Form",
       },
     },
-    AddressBookScreen: {
+    AddressBook: {
       screen: AddressBookScreen,
       navigationOptions: {
         tabBarIcon: tabInfo => {
@@ -30,6 +31,7 @@ const AddressTabNavigator = createMaterialTopTabNavigator(
             <Ionicons name="md-bookmarks" size={25} color={tabInfo.tintColor} />
           );
         },
+        tabBarLabel: "Address Book",
       },
     },
   },
