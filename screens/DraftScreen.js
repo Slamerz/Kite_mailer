@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import {useSelector} from 'react-redux';
-import NewMailButton from '../components/NewMailButton';
 
 import Colors from '../constants/Colors';
 
@@ -11,7 +10,6 @@ const DraftScreen = props => {
   return (
     <View style={styles.screen}>
       <Text>Drafts</Text>
-      <NewMailButton {...props} />
     </View>
   );
 };

@@ -8,21 +8,22 @@ import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import Colors from '../constants/Colors';
 
 import GalleryScreen from '../screens/GalleryScreen';
-import MailTemplateScreen from '../screens/MailTemplateScreen';
+// import MailTemplateScreen from '../screens/MailTemplateScreen';
 import MessageScreen from '../screens/MessageScreen';
+import PreviewScreen from "../screens/PreviewScreen"
 
 const TemplateGalleryMessageTabNavigator = createMaterialTopTabNavigator(
   {
-    Template: {
-      screen: MailTemplateScreen,
-      navigationOptions: {
-        tabBarIcon: tabInfo => {
-          return (
-            <Ionicons name="ios-albums" size={25} color={tabInfo.tintColor} />
-          );
-        },
-      },
-    },
+    // Template: {
+    //   screen: MailTemplateScreen,
+    //   navigationOptions: {
+    //     tabBarIcon: tabInfo => {
+    //       return (
+    //         <Ionicons name="ios-albums" size={25} color={tabInfo.tintColor} />
+    //       );
+    //     },
+    //   },
+    // },
     Gallery: {
       screen: GalleryScreen,
       navigationOptions: {
@@ -39,6 +40,16 @@ const TemplateGalleryMessageTabNavigator = createMaterialTopTabNavigator(
         tabBarIcon: tabInfo => {
           return (
             <Ionicons name="md-create" size={25} color={tabInfo.tintColor} />
+          );
+        },
+      },
+    },
+    Preview: {
+      screen: PreviewScreen,
+      navigationOptions: {
+        tabBarIcon: tabInfo => {
+          return (
+            <Ionicons name="md-eye" size={25} color={tabInfo.tintColor} />
           );
         },
       },
