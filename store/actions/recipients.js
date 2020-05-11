@@ -15,11 +15,12 @@ export const UPDATE_RECIPIENT_FAIL = 'UPDATE_RECIPIENT_FAIL';
 const url = domain + 'recipients';
 
 export const createRecipient = recipientData => (dispatch, getState) => {
-  const token = getState().auth.login.token;
+  // const token = getState().auth.login.token;
   dispatch({type: CREATE_RECIPIENT});
   return fetch(url, {
     method: 'POST',
-    headers: {...jsonHeaders, Authorization: `Bearer ${token}`},
+    // headers: {...jsonHeaders, Authorization: `Bearer ${token}`},
+    headers: {...jsonHeaders},
     body: JSON.stringify(recipientData),
   })
     .then(handleJsonResponse)

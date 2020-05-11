@@ -12,6 +12,7 @@ import {
 
 const initialState = {
   recipients: [],
+  currentRecipient: {},
   createRecipientsLoading: false,
   createRecipientsError: null,
   getRecipientsLoading: false,
@@ -34,6 +35,11 @@ const recipientsReducer = (state = initialState, action) => {
         ...state,
         createRecipientsLoading: false,
         recipients: [...state.recipients, action.payload.recipient],
+        currentRecipient: Object.assign(
+          {},
+          state.currentRecipient,
+          action.payload,
+        ),
       };
     case CREATE_RECIPIENT_FAIL:
       return {

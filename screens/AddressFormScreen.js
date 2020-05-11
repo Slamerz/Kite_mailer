@@ -1,24 +1,49 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  Keyboard,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 // import NewMailButton from '../components/NewMailButton';
 
-import CreateMailButton from "../components/CreateMailButton"
+import CreateMailButton from '../components/CreateMailButton';
+import AddressForm from '../components/AddressForm';
 
 const AddressFormScreen = props => {
   return (
-    <View style={styles.screen}>
-      <Text>AddressForm</Text>
-      <CreateMailButton {...props} />
-      {/* <NewMailButton {...props} /> */}
-    </View>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}>
+      <View style={styles.screen}>
+        <SafeAreaView style={styles.safeArea}>
+          <ScrollView style={styles.scrollArea}>
+            <AddressForm {...props} />
+            {/* <CreateMailButton {...props} /> */}
+            {/* <NewMailButton {...props} /> */}
+          </ScrollView>
+        </SafeAreaView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
-    screen: {
+  screen: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  scrollArea: {
+    width: '90%',
+  },
+  safeArea: {
+    width: '100%',
+    paddingLeft: '10%',
   },
 });
 
