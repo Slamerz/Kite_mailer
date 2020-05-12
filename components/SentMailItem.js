@@ -1,47 +1,72 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Container, Content, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import React, { useState } from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  Icon,
+  Container,
+  Header,
+  Content,
+  List,
+  ListItem,
+  Left,
+  Body,
+  Right,
+  Thumbnail,
+  Text,
+  Card,
+  CardItem,
+  Button,
+} from 'native-base';
+import SentMailItemSmall from './SentMailItemSmall';
+import SentMailItemExpanded from './SentMailItemExpanded';
 
 const SentMailItem = props => {
-  const [email] = useState(''); //from User model
-  const [status, facilityName, addressee, saveTime] = useState(''); //from Message model
+  const [expanded, setExpanded] = useState(false);
+
+  const handleSelect = () => {
+    setExpanded(!expanded);
+  };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.sentcontainer}>
-        <Container>
-          <Content >
-            <Left>
-              <Thumbnail source={{ uri: 'Image URL' }} />
-            </Left>
-            <Body>
-              <Text>{this.props.email}</Text>
-              <Text>{this.props.addressee}</Text>
-              <Text>{this.props.facilityName}</Text>
-            </Body>
-            <Right>
-              <Text>{this.props.status}</Text>
-              <Text>{this.props.saveTime}</Text>
-            </Right>
-          </Content>
-        </Container>
-      </View>
+    <View style={styles.view}>
+      {expanded && (
+        <View style={styles.view}>
+          <Card>
+            <CardItem>
+              <View
+                style={{
+                  flexDirection: 'row',
+                }}>
+                <View style={{ width: '70%' }}>
+                  <Text>Recipient Name</Text>
+                  <Text>Destination</Text>
+                </View>
+                <View style={{ alignSelf: 'center' }}>
+                  <Text>Date</Text>
+                </View>
+              </View>
+              <Right>
+                <Button transparent onPress={handleSelect}>
+                  <Icon
+                    name="md-close"
+                    style={{ color: 'black', fontSize: 30 }}
+                  />
+                </Button>
+              </Right>
+            </CardItem>
+            <CardItem>
+              <Text>More</Text>
+            </CardItem>
+          </Card>
+        </View>
+      )}
+      {!expanded && (
+        <TouchableOpacity onPress={handleSelect}>
+          <SentMailItemSmall {...props} />
+        </TouchableOpacity>
+      )}
     </View>
-  )
-}
+  );
+};
+const styles = StyleSheet.create({ view: { paddingVertical: 2 } });
 
-const styles = StyleSheet.create({
-  container: {
-    width: '90%',
-  },
-  text: {
-    fontSize: 35,
-    color: 'grey',
-  },
-  sentcontainer: {
-    borderRadius: '0px 39px 39px 0px'
-
-  }
-});
-
-export default SentMailItem
+export default SentMailItem;
