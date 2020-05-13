@@ -13,6 +13,7 @@ import {
   DELETE_MAIL_SUCCESS,
   DELETE_MAIL_FAIL,
   SAVE_MESSAGE,
+  SAVE_ORIENTATION,
 } from '../actions';
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
   deleteMailLoading: false,
   deleteMailError: null,
   allMail: [],
+  landscape: true,
 };
 
 const mailReducer = (state = initialState, action) => {
@@ -34,6 +36,11 @@ const mailReducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.payload,
+      };
+    case SAVE_ORIENTATION:
+      return {
+        ...state,
+        landscape: action.payload,
       };
     case CREATE_MAIL:
       return {

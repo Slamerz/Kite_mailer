@@ -5,7 +5,6 @@ import ImageOrientation from '../components/ImageOrientation';
 const GalleryScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>Gallery</Text>
       <ImageOrientation {...props} />
     </View>
   );

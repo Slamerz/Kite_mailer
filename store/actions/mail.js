@@ -17,6 +17,7 @@ export const DELETE_MAIL_SUCCESS = 'DELETE_MAIL_SUCCESS';
 export const DELETE_MAIL_FAIL = 'DELETE_MAIL_FAIL';
 
 export const SAVE_MESSAGE = 'SAVE_MESSAGE';
+export const SAVE_ORIENTATION = 'SAVE_ORIENTATION';
 
 const url = domain + 'mail';
 
@@ -25,6 +26,13 @@ export const saveMessage = message => dispatch => {
   return dispatch({
     type: SAVE_MESSAGE,
     payload: message,
+  });
+};
+
+export const setOrientation = isLandscape => dispatch => {
+  return dispatch({
+    type: SAVE_ORIENTATION,
+    payload: isLandscape,
   });
 };
 
