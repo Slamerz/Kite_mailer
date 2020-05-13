@@ -12,7 +12,16 @@ export const UPDATE_RECIPIENT = 'UPDATE_RECIPIENT';
 export const UPDATE_RECIPIENT_SUCCESS = 'UPDATE_RECIPIENT_SUCCESS';
 export const UPDATE_RECIPIENT_FAIL = 'UPDATE_RECIPIENT_FAIL';
 
+export const SAVE_RECIPIENT = 'SAVE_RECIPIENT';
+
 const url = domain + 'recipients';
+
+export const saveCurrentRecipient = recipientData => dispatch => {
+  return dispatch({
+    type: SAVE_RECIPIENT,
+    payload: recipientData,
+  });
+};
 
 export const createRecipient = recipientData => (dispatch, getState) => {
   // const token = getState().auth.login.token;

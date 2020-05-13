@@ -8,6 +8,7 @@ import {
   UPDATE_RECIPIENT,
   UPDATE_RECIPIENT_SUCCESS,
   UPDATE_RECIPIENT_FAIL,
+  SAVE_RECIPIENT,
 } from '../actions';
 
 const initialState = {
@@ -23,6 +24,11 @@ const initialState = {
 
 const recipientsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SAVE_RECIPIENT:
+      return {
+        ...state,
+        currentRecipient: action.payload,
+      };
     case CREATE_RECIPIENT:
       return {
         ...state,

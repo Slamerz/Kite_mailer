@@ -12,9 +12,11 @@ import {
   DELETE_MAIL,
   DELETE_MAIL_SUCCESS,
   DELETE_MAIL_FAIL,
+  SAVE_MESSAGE,
 } from '../actions';
 
 const initialState = {
+  message: '',
   createMailLoading: false,
   createMailError: null,
   getMailLoading: false,
@@ -28,6 +30,11 @@ const initialState = {
 
 const mailReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SAVE_MESSAGE:
+      return {
+        ...state,
+        message: action.payload,
+      };
     case CREATE_MAIL:
       return {
         ...state,

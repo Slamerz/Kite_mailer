@@ -10,7 +10,10 @@ import {
 } from 'react-native';
 import {Button} from 'native-base';
 import {useDispatch} from 'react-redux';
-import {createRecipient} from '../store/actions/recipients';
+import {
+  createRecipient,
+  saveCurrentRecipient,
+} from '../store/actions/recipients';
 
 import Colors from '../constants/Colors';
 import CreateMailButton from '../components/CreateMailButton';
@@ -204,9 +207,21 @@ const AddressForm = props => {
               } else if (zipCode.length < 1) {
                 setZipCodeMissing('Please include Zip Code');
               } else {
+                dispatch(
+                  props.saveCurrentRecipient({
+                    firstName: firstName,
+                    lastName: lastName,
+                    inmateId: inmateId,
+                    facilityName: facilityName,
+                    streetAddress: streetAddress,
+                    city: city,
+                    addressState: addressState,
+                    zipCode: zipCode,
+                  }),
+                );
                 props.navigation.navigate({routeName: 'CreateMail'});
                 // dispatch(
-                //   createRecipient({
+                //   props.createRecipient({
                 //     firstName: firstName,
                 //     lastName: lastName,
                 //     inmateId: inmateId,
@@ -281,6 +296,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   createRecipient,
+  saveCurrentRecipient,
 };
 
 export default connect(

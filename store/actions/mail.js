@@ -16,7 +16,17 @@ export const DELETE_MAIL = 'DELETE_MAIL';
 export const DELETE_MAIL_SUCCESS = 'DELETE_MAIL_SUCCESS';
 export const DELETE_MAIL_FAIL = 'DELETE_MAIL_FAIL';
 
+export const SAVE_MESSAGE = 'SAVE_MESSAGE';
+
 const url = domain + 'mail';
+
+// temporary action to bypass backend
+export const saveMessage = message => dispatch => {
+  return dispatch({
+    type: SAVE_MESSAGE,
+    payload: message,
+  });
+};
 
 export const createMail = mailData => (dispatch, getState) => {
   const token = getState().auth.login.token;

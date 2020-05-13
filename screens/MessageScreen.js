@@ -1,11 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Keyboard,
+  TouchableWithoutFeedback,
+} from 'react-native';
+import Message from '../components/Message';
 
 const MessageScreen = props => {
   return (
-    <View style={styles.screen}>
-      <Text>Compose message</Text>
-    </View>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.screen}>
+        {/* <Text>Compose message</Text> */}
+        <Message />
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
