@@ -4,8 +4,16 @@ import {connect} from 'react-redux';
 
 const CardFrontPreview = props => {
   return (
-    <View style={styles.card}>
-      <Text>CardFrontPreview</Text>
+    <View>
+      {props.landscape ? (
+        <View style={styles.card}>
+          <Text>CardFrontPreview</Text>
+        </View>
+      ) : (
+        <View style={styles.card2}>
+          <Text>CardFrontPreview</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -20,11 +28,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 30,
   },
+  card2: {
+    width: 250,
+    height: 400,
+    borderColor: 'gray',
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 30,
+  },
 });
 
 const mapStateToProps = state => {
   return {
-    message: state.mail.message,
+    landscape: state.mail.landscape,
   };
 };
 const mapDispatchToProps = {};

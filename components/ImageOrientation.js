@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Radio, Left, Right, ListItem, List, Content} from 'native-base';
 import {useDispatch} from 'react-redux';
 import {connect} from 'react-redux';
+import {setOrientation} from '../store/actions/mail';
 
 const ImageOrientation = props => {
   const [landscape, setLandscape] = useState(true);
@@ -21,6 +22,7 @@ const ImageOrientation = props => {
               if (landscape) {
                 return;
               }
+              dispatch(props.setOrientation(!landscape));
               setLandscape(!landscape);
             }}
           />
@@ -37,6 +39,7 @@ const ImageOrientation = props => {
               if (!landscape) {
                 return;
               }
+              dispatch(props.setOrientation(!landscape));
               setLandscape(!landscape);
             }}
           />
@@ -53,4 +56,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageOrientation;
+const mapStateToProps = {};
+const mapDispatchToProps = {
+  setOrientation,
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(ImageOrientation);

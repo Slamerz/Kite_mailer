@@ -13,7 +13,16 @@ import {
 
 const initialState = {
   recipients: [],
-  currentRecipient: {},
+  currentRecipient: {
+    firstName: '',
+    lastName: '',
+    inmateId: '',
+    facilityName: '',
+    streetAddress: '',
+    city: '',
+    addressState: '',
+    zipCode: '',
+  },
   createRecipientsLoading: false,
   createRecipientsError: null,
   getRecipientsLoading: false,
